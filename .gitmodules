@@ -1,0 +1,9 @@
+[submodule "libs/printf"]
+	path = libs/printf
+	url = git@github.com:fkyros/printf.git
+[submodule "libs/ggnl"]
+	path = libs/ggnl
+	url = git@github.com:fkyros/ggnl.git
+[submodule "libs/libft"]
+	path = libs/libft
+	url = git@github.com:fkyros/libft.git
