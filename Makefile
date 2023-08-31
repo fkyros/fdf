@@ -6,7 +6,7 @@
 #    By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/22 19:44:28 by gade-oli          #+#    #+#              #
-#    Updated: 2023/08/22 20:54:36 by gade-oli         ###   ########.fr        #
+#    Updated: 2023/08/31 20:32:40 by gade-oli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME = fdf
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 
-SRC = src/fdf.c
+SRC = src/mlx.c
 OBJ = $(SRC:src/%.c=bin/%.o)
 
 #libft-----------------------------------------------------------
