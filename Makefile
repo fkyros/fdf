@@ -6,9 +6,16 @@
 #    By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/22 19:44:28 by gade-oli          #+#    #+#              #
-#    Updated: 2023/08/31 20:32:40 by gade-oli         ###   ########.fr        #
+#    Updated: 2023/10/16 22:37:21 by gade-oli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+#colors----------------------------------------------------------
+
+RED 	= '\033[1;31m'
+GREEN   = '\033[1;32m'
+BLUE    = '\033[1;34m'
+RESET   = '\033[0;0m'
 
 #variables-------------------------------------------------------
 
@@ -17,7 +24,10 @@ NAME = fdf
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 
-SRC = src/mlx.c
+SRC = src/fdf.c \
+	  src/utils/ft_error.c \
+	  src/utils/free_matrix.c \
+	  src/parser/read_file.c
 OBJ = $(SRC:src/%.c=bin/%.o)
 
 #libft-----------------------------------------------------------
@@ -29,14 +39,7 @@ LIBFT = $(LIBFT_DIR)libft.a
 
 MLX_DIR = libs/mlx
 MLX_LIB = $(MLX_DIR)/libmlx_$(UNAME).a
-MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
-
-#colors----------------------------------------------------------
-
-RED 	= '\033[1;31m'
-GREEN   = '\033[1;32m'
-BLUE    = '\033[1;34m'
-RESET   = '\033[0;0m'
+MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit -lm
 
 #recipes---------------------------------------------------------
 
