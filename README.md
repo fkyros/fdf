@@ -13,7 +13,7 @@ mlx is a bit hard to comprehend, but only the math aside is another story. let m
 
 - aliasing (staircasing) effect: distortion that happens when a signal is reconstructed in a smaller resolution than the original sample
 
-- bits per pixel (bpp): the amount of color information contained in each pixel in an image
+- bits per pixel (bpp): the amount of color information contained in each pixel in an image. also called 'depth of image'
 
 - size line: number of bytes used to store one line of the image in memory
 
@@ -31,10 +31,22 @@ to compile properly make sure to add `-lmlx -framework OpenGL -framework AppKit`
 
 - `mlx_init()` initializes the graphic system to your computer. returns a pointer identifying your mlx unning instance
 
+- `mlx_new_window()` creates a window and returns a pointer that identifies it on memory
+
 - `mlx_loop()` mantains the window open until a SIGINT is sent. its always waiting for an event
 
-### why use mlx images instead of pixel\_put?
+### mlx images
 
-using pixel put is way longer than managing a image in memory. to display just one pixel it has to access the program, draw the pixel on the desired coordinate, and return an integer. 
+a windows is made up of pixels. a pixel stores 4 different values: ALPHA and RGB color encoding.
+- ALPHA: refers to the opacity of the pixel
+- RGB: represents the color in 3 hexadecimal values determining the amount of red, green and blue respectively
+
+(usually) each of these values occupies 1B of memory, so every pixel requires 4B of memory (ARGB econding). if this numbers do not ring a bell to you, get your bits per pixel with the `mlx_get_color_value()` function.
+
+when a 
+
+#### why use mlx images instead of pixel\_put?
+
+using pixel put takes way longer than managing an image in memory. to display just one pixel it has to access the program, draw the pixel on the desired coordinate, and return an integer. 
 
 we rather buffer everything onto an image where we input all the information we want, and then draw everything at once.

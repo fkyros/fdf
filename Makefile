@@ -6,7 +6,7 @@
 #    By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/22 19:44:28 by gade-oli          #+#    #+#              #
-#    Updated: 2023/10/16 22:37:21 by gade-oli         ###   ########.fr        #
+#    Updated: 2023/10/23 17:11:02 by gade-oli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,11 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 
 SRC = src/fdf.c \
-	  src/utils/ft_error.c \
+	  src/utils/errors.c \
 	  src/utils/free_matrix.c \
-	  src/parser/read_file.c
+	  src/parser/read_file.c \
+	  src/graphics/window.c
+
 OBJ = $(SRC:src/%.c=bin/%.o)
 
 #libft-----------------------------------------------------------

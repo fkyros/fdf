@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 19:57:04 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/10/16 22:37:50 by gade-oli         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:29:18 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,13 @@
 # include "../libs/libft/libft.h"
 # include "defines.h"
 
-int	ft_error(char *msg);
+void	create_window(t_fdf *fdf);
+t_map   *read_map(char *file);
+void	create_image(t_mlx *mlx);
 
-t_map   read_map(char *file);
+int		ft_error(char *msg);
+void	exit_error(char *msg);
+
 void    free_matrix(char **matrix);
 
 #endif
