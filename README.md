@@ -5,6 +5,10 @@ this project is about representing a landscape as a 3D object in which all surfa
 
 !!!!!add image
 
+## how to install
+
+follow the instructions of [official minilibx repo](https://github.com/42Paris/minilibx-linux) to build and include the 'libmlx.a' and 'mlx.h' to your system
+
 ## how to draw
 
 mlx is a bit hard to comprehend, but only the math aside is another story. let me introduce you to concepts and vocabulary I came across during the realization of this project in order to succeed in it (or at least ty it)

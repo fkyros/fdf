@@ -39,9 +39,11 @@ LIBFT = $(LIBFT_DIR)libft.a
 
 #minilibx--------------------------------------------------------
 
-MLX_DIR = libs/mlx
-MLX_LIB = $(MLX_DIR)/libmlx_$(UNAME).a
-MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit -lm
+#MLX_DIR = libs/mlx
+#MLX_LIB = $(MLX_DIR)/libmlx_$(UNAME).a
+#MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit -lm
+MLX_FLAGS = -lmlx -lXext -lX11
+MLX = /usr/local/lib/libmlx.a
 
 #recipes---------------------------------------------------------
 
@@ -57,7 +59,7 @@ $(LIBFT):
 		@echo $(GREEN)"libft compiled!"$(RESET)
 
 $(NAME):	$(LIBFT) $(OBJ)
-		$(CC) $(CFLAGS) $(MLX_FLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+		$(CC) $(CFLAGS) $(MLX_FLAGS) $(OBJ) $(LIBFT) $(MLX) -o $(NAME)
 		@echo $(GREEN)"fdf compiled!"$(RESET)
 
 clean:
