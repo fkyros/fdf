@@ -6,7 +6,7 @@
 #    By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/22 19:44:28 by gade-oli          #+#    #+#              #
-#    Updated: 2023/11/03 15:24:50 by gade-oli         ###   ########.fr        #
+#    Updated: 2023/11/03 18:57:12 by gade-oli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC = src/fdf.c \
 	  src/parser/read_file.c \
 	  src/parser/print_map.c \
 	  src/graphics/window.c \
+	  src/graphics/draw.c \
 	  src/graphics/keyhooks.c
 
 OBJ = $(SRC:src/%.c=bin/%.o)

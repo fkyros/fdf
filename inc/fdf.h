@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 19:57:04 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/11/03 15:24:20 by gade-oli         ###   ########.fr       */
+/*   Updated: 2023/11/03 18:59:13 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ void	print_map(t_fdf *fdf);
 int		proper_extension(char *file);
 int		get_map_width(char *file);
 int		get_map_height(char *file);
+
+void	my_pixel_put(t_mlx *mlx, int x, int y);
+void	bresenham(int x1, int y1, int x2, int y2, t_mlx *mlx);
 
 int		ft_error(char *msg);
 void	exit_error(char *msg);

@@ -27,6 +27,8 @@ Bresenham's line algorithm: simple and rapid method that determines the points w
 
 !!!!!add image coordinates
 
+the reason i chose this algorithm is because of its efficiency, by only using substraction, addition and multiplication you can draw anything.
+
 ## minilibx
 
 oh god. here we go.
@@ -37,7 +39,16 @@ to compile properly make sure to add `-lmlx -framework OpenGL -framework AppKit`
 
 - `mlx_new_window()` creates a window and returns a pointer that identifies it on memory
 
+- `mlx_key_hook()` given the window pointer of mlx, a function given as a parameter can handle the key event
+
 - `mlx_loop()` mantains the window open until a SIGINT is sent. its always waiting for an event
+
+- `mlx_get_data_addr()` used to obtain window info from the system. given the issue of pixel\_put, we need this info to create mlx images. we can obtain from this function:
+	- bpp
+	- line length: how many bytes does a word of the display memory (VRAM) is long
+	- endian: how does the system manage the [order of bytes](https://en.wikipedia.org/wiki/Endianness)
+
+- `mlx_put_image_to_window()` displays everything from the image memory into the screen
 
 ### mlx images
 
@@ -54,3 +65,12 @@ when a
 using pixel put takes way longer than managing an image in memory. to display just one pixel it has to access the program, draw the pixel on the desired coordinate, and return an integer. 
 
 we rather buffer everything onto an image where we input all the information we want, and then draw everything at once.
+
+# resources
+
+this could haven't happened without these golden archives:
+
+[bresenham](https://digitalbunker.dev/bresenhams-line-algorithm/)
+[mlx docs](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html)
+[mlx tutorial](https://github.com/Gontjarow/MiniLibX/tree/master/docs)
+[rgb slider](http://www.cknuckles.com/rgbsliders.html)
