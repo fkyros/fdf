@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   keyhooks.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 20:25:52 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/11/03 15:28:50 by gade-oli         ###   ########.fr       */
+/*   Created: 2023/11/03 15:14:13 by gade-oli          #+#    #+#             */
+/*   Updated: 2023/11/03 15:39:11 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
+#include "../../inc/fdf.h"
 
-int	main(int argc, char **argv)
+//TODO: when x pressed on the window corner, exit clean
+
+int	deal_key(int key, t_fdf *fdf)
 {
-	t_fdf	*fdf;
-
-	if (argc != 2)
-		return (ft_error("usage: ./fdf <map_name>\n"));
-	fdf = malloc(sizeof(t_fdf));
-	if (!fdf)
-		exit_error("error creating fdf");
-	fdf->map = generate_map(argv[1]);
-	print_map(fdf);	
-	create_window(fdf);
-	//draw(fdf);
-	mlx_key_hook(fdf->mlx->win, deal_key, fdf);
-	mlx_loop(fdf->mlx->ptr);
-	return (SUCCESS);
+	//TODO: check if the key pressed is valid
+	//ft_printf("key pressed: %d\n", key);
+	if (key == ESC)
+		exit(0);
+	(void)fdf;
+	return (0);
 }

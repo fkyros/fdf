@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   print_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 20:25:52 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/11/03 15:28:50 by gade-oli         ###   ########.fr       */
+/*   Created: 2023/11/03 14:54:53 by gade-oli          #+#    #+#             */
+/*   Updated: 2023/11/03 14:57:39 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
+#include "../../inc/fdf.h"
 
-int	main(int argc, char **argv)
+void	print_map(t_fdf *fdf)
 {
-	t_fdf	*fdf;
+	int	i;
+	int	j;
 
-	if (argc != 2)
-		return (ft_error("usage: ./fdf <map_name>\n"));
-	fdf = malloc(sizeof(t_fdf));
-	if (!fdf)
-		exit_error("error creating fdf");
-	fdf->map = generate_map(argv[1]);
-	print_map(fdf);	
-	create_window(fdf);
-	//draw(fdf);
-	mlx_key_hook(fdf->mlx->win, deal_key, fdf);
-	mlx_loop(fdf->mlx->ptr);
-	return (SUCCESS);
+	ft_printf("map width: %d\nmap height: %d\n", fdf->map->width, fdf->map->height);
+	i = 0;
+	while(i < fdf->map->height)
+	{
+		j = 0;
+		while (j < fdf->map->width)
+		{
+			printf("%3d ", fdf->map->z_matrix[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
 }

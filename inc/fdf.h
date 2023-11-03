@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 19:57:04 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/11/03 11:45:13 by gade-oli         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:24:20 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ t_map   *read_map(char *file);
 void	create_image(t_mlx *mlx);
 t_map	*generate_map(char *file);
 
-//for testing
+int		deal_key(int key, t_fdf *fdf);
+void	print_map(t_fdf *fdf);
 int		proper_extension(char *file);
 int		get_map_width(char *file);
 int		get_map_height(char *file);

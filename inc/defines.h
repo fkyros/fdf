@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 20:48:49 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/10/23 20:32:10 by gade-oli         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:38:18 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,22 @@
 # define DEFINES_H
 
 # define WIN_NAME "gade-oli fdf :)"
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 1080
+# define WIN_WIDTH 720
+# define WIN_HEIGHT 480
+
+# define PGUP 126
+# define PGDOWN 125
+# define PGLEFT 123
+# define PGRIGHT 124
+# define W 13
+# define A 0
+# define S 1
+# define D 2
+# define SPACE 49
+# define ESC 53
+# define CCENTER 8
+# define X 7
+# define Q 12
 
 # ifndef FAIL
 #  define FAIL 1

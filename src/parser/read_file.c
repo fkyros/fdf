@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 20:20:37 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/11/03 14:25:32 by gade-oli         ###   ########.fr       */
+/*   Updated: 2023/11/03 14:39:56 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,28 @@ int	get_map_width(char *file)
 	int		fd;
 	char	*line;
 	char	**matrix;
+	int		re_width;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		exit_error("cannot open the file");
 	line = get_next_line(fd);
-	matrix = ft_split(line, ' ');
 	width = 0;
-	while (matrix[width])
-		width++;
-	free_matrix(matrix);
+	re_width = 0;
 	while (line)
 	{
+		matrix = ft_split(line, ' ');
+		if (!width)
+			while (matrix[width])
+				width++;
+		else
+		{
+			while (matrix[re_width])
+				re_width++;
+			if (width != re_width)
+				exit_error("bad map format: different line widths");
+		}
+		free_matrix(matrix);
 		free(line);
 		line = get_next_line(fd);
 	}
