@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 19:57:04 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/10/23 18:29:18 by gade-oli         ###   ########.fr       */
+/*   Updated: 2023/11/03 11:45:13 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,18 @@
 
 # include <mlx.h>
 # include "../libs/libft/libft.h"
+# include "../libs/printf/inc/ft_printf.h"
 # include "defines.h"
 
 void	create_window(t_fdf *fdf);
 t_map   *read_map(char *file);
 void	create_image(t_mlx *mlx);
+t_map	*generate_map(char *file);
+
+//for testing
+int		proper_extension(char *file);
+int		get_map_width(char *file);
+int		get_map_height(char *file);
 
 int		ft_error(char *msg);
 void	exit_error(char *msg);

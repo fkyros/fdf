@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 20:25:52 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/10/23 22:53:07 by gade-oli         ###   ########.fr       */
+/*   Updated: 2023/11/03 11:12:36 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	fdf = malloc(sizeof(t_fdf));
 	if (!fdf)
 		exit_error("error creating fdf");
-	fdf->map = read_map(argv[1]);
+	fdf->map = generate_map(argv[1]);
 	printf("map width: %d\nmap height: %d\n", fdf->map->width, fdf->map->height);
 	
 	//TODO: hacer funcion de visualizacion

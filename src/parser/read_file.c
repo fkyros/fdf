@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 20:20:37 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/10/23 22:50:38 by gade-oli         ###   ########.fr       */
+/*   Updated: 2023/11/03 14:25:32 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,18 @@ int	get_map_width(char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		exit_error("cannot open the map");
+		exit_error("cannot open the file");
 	line = get_next_line(fd);
 	matrix = ft_split(line, ' ');
 	width = 0;
 	while (matrix[width])
 		width++;
 	free_matrix(matrix);
+	while (line)
+	{
+		free(line);
+		line = get_next_line(fd);
+	}
 	close(fd);
 	return (width);
 }
@@ -40,7 +45,7 @@ int	get_map_height(char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		exit_error("cannot open the map");
+		exit_error("cannot open the file");
 	height = 0;
 	line = get_next_line(fd);
 	while (line)
@@ -86,15 +91,15 @@ t_map	*read_map(char *file)
 	if (!map->width || !map->height)
 		exit_error("map not valid");
 	i = 0;
-	map->z_matrix = malloc(sizeof(int *) * map->height + 1);
+	map->z_matrix = malloc(sizeof(int *) * map->height);
 	while (i < map->height + 1)
 	{
-		map->z_matrix[i] = malloc(sizeof(int) * map->width + 1); //TODO: +1??
+		map->z_matrix[i] = malloc(sizeof(int) * map->width);
 		i++;
 	}
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		exit_error("cannot open map");
+		exit_error("cannot open the file");
 	line = get_next_line(fd);
 	i = 0;
 	while (line)
@@ -107,4 +112,24 @@ t_map	*read_map(char *file)
 	map->z_matrix[i] = NULL;
 	close(fd);
 	return (map);
+}
+
+int	proper_extension(char *file)
+{
+	char	*extension;
+
+	ft_printf("path: \"%s\"\n", file);
+	extension = ft_strrchr(file, '.');
+	if (!extension)
+		return (0);
+	if (ft_strcmp(extension, ".fdf"))
+		return (0);
+	return (1);
+}
+
+t_map	*generate_map(char *file)
+{
+	if (!proper_extension(file))
+		exit_error("map file has to be an .fdf extension");
+	return (read_map(file));
 }

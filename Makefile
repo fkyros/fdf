@@ -6,7 +6,7 @@
 #    By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/22 19:44:28 by gade-oli          #+#    #+#              #
-#    Updated: 2023/10/23 17:11:02 by gade-oli         ###   ########.fr        #
+#    Updated: 2023/11/03 11:39:27 by gade-oli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,13 +37,20 @@ OBJ = $(SRC:src/%.c=bin/%.o)
 LIBFT_DIR = libs/libft/
 LIBFT = $(LIBFT_DIR)libft.a
 
+#libft-----------------------------------------------------------
+
+PRINTF_DIR = libs/printf/
+PRINTF = $(PRINTF_DIR)libftprintf.a
+
 #minilibx--------------------------------------------------------
 
 #MLX_DIR = libs/mlx
 #MLX_LIB = $(MLX_DIR)/libmlx_$(UNAME).a
-#MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit -lm
-MLX_FLAGS = -lmlx -lXext -lX11
-MLX = /usr/local/lib/libmlx.a
+MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit -lm
+
+#CAUTION: apply this on linux system
+#MLX_FLAGS = -lmlx -lXext -lX11
+#MLX = /usr/local/lib/libmlx.a
 
 #recipes---------------------------------------------------------
 
@@ -58,17 +65,23 @@ $(LIBFT):
 		@make --directory=$(LIBFT_DIR)
 		@echo $(GREEN)"libft compiled!"$(RESET)
 
-$(NAME):	$(LIBFT) $(OBJ)
-		$(CC) $(CFLAGS) $(MLX_FLAGS) $(OBJ) $(LIBFT) $(MLX) -o $(NAME)
+$(PRINTF):
+		@make --directory=$(PRINTF_DIR)
+		@echo $(GREEN)"ft_printf compiled!"$(RESET)
+
+$(NAME):	$(LIBFT) $(PRINTF) $(OBJ)
+		$(CC) $(CFLAGS) $(MLX_FLAGS) $(OBJ) $(LIBFT) $(PRINTF) $(MLX) -o $(NAME)
 		@echo $(GREEN)"fdf compiled!"$(RESET)
 
 clean:
 		rm -rf bin/
 		@make clean --directory=$(LIBFT_DIR)
+		@make clean --directory=$(PRINTF_DIR)
 		@echo $(RED)"binaries deleted!"$(RESET)
 
 fclean: clean
 		@make fclean --directory=$(LIBFT_DIR)
+		@make fclean --directory=$(PRINTF_DIR)
 		rm -f $(NAME)
 		@echo $(RED)"fdf deleted!"$(RESET)
 
