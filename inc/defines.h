@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 20:48:49 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/11/03 15:38:18 by gade-oli         ###   ########.fr       */
+/*   Updated: 2023/11/13 13:26:27 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define WIN_NAME "gade-oli fdf :)"
 # define WIN_WIDTH 720
 # define WIN_HEIGHT 480
+# define ZOOM 20
 
 # define PGUP 126
 # define PGDOWN 125
@@ -57,6 +58,7 @@ typedef struct s_map
 {
 	int		width;
 	int		height;
+	int		zoom;
 	int		**z_matrix;
 }	t_map;
 

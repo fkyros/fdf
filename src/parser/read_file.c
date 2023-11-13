@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 20:20:37 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/11/03 14:39:56 by gade-oli         ###   ########.fr       */
+/*   Updated: 2023/11/13 13:26:17 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ t_map	*read_map(char *file)
 		line = get_next_line(fd);
 	}
 	map->z_matrix[i] = NULL;
+	map->zoom = ZOOM;
 	close(fd);
 	return (map);
 }
