@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 20:25:52 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/11/13 14:22:37 by gade-oli         ###   ########.fr       */
+/*   Updated: 2023/11/24 13:15:09 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,9 @@ int	main(int argc, char **argv)
         exit_error("error creating the image");
 	fdf->mlx->img_addr = mlx_get_data_addr(fdf->mlx->img, &fdf->mlx->bpp, \
 			&fdf->mlx->line_length, &fdf->mlx->endian);
-	//bresenham(0, 2, 5, 4, fdf->mlx);
+
 	draw_map(fdf);
 	mlx_put_image_to_window(fdf->mlx->ptr, fdf->mlx->win, fdf->mlx->img, 0, 0);
-	ft_printf("image put!\n");
 	
 	print_instructions(fdf->mlx);
 	mlx_key_hook(fdf->mlx->win, deal_key, fdf);

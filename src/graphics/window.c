@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:44:17 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/11/13 14:23:14 by gade-oli         ###   ########.fr       */
+/*   Updated: 2023/11/24 13:03:20 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ void	print_instructions(t_mlx *mlx)
 {
 	mlx_string_put(mlx->ptr, mlx->win, 300, 300, TEXT_COLOR, \
 			"ESC to exit");
-	mlx_string_put(mlx->ptr, mlx->win, 300, 350, TEXT_COLOR, \
-			"COCK to balls");
 }
 
 

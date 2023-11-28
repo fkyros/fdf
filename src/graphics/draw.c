@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:04:57 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/11/13 14:16:27 by gade-oli         ###   ########.fr       */
+/*   Updated: 2023/11/24 14:56:14 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,17 @@ void	bresenham(int x1, int y1, int x2, int y2, t_fdf *fdf)
 	else
 		color = 0x00FFFFFF;
 
+	// Isometric transformation
+	x1 = (x1 - y1) * cos(0.523599);
+	y1 = (x1 + y1) * sin(0.523599);
+	x2 = (x2 - y2) * cos(0.523599);
+	y2 = (x2 + y2) * sin(0.523599);
+
 	while ((x - x1) || (y - y1))
 	{
 		my_pixel_put(fdf->mlx, x, y, color);
 		x += dx;
 		y += dy;
-		ft_printf("drawn (%d, %d)\n", x, y);
 	}
 }
 

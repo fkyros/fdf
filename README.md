@@ -19,7 +19,7 @@ mlx is a bit hard to comprehend, but only the math aside is another story. let m
 
 - bits per pixel (bpp): the amount of color information contained in each pixel in an image. also called 'depth of image'
 
-- size line: number of bytes used to store one line of the image in memory
+- size line (line length): number of bytes used to store one line of the image in memory
 
 ### bresenham
 
@@ -65,6 +65,18 @@ when a
 using pixel put takes way longer than managing an image in memory. to display just one pixel it has to access the program, draw the pixel on the desired coordinate, and return an integer. 
 
 we rather buffer everything onto an image where we input all the information we want, and then draw everything at once.
+
+#### writing our own pixel\_put
+in order to write on the proper place of the window, we need to calculate where on memory is this pixel located
+
+given two coordinates (a point, make sure its in bounds of the window size!!) and the mlx\_image memory direction, we can calculate the position in the window with:
+
+	offset = (y * mlx->size_line) + (x * mlx->bpp/8);
+	pixel_pos = mlx->img + offset;
+
+'y' is the row where you want to write the pixel, multiplying it by the line length of a row, you get the total number of bytes in all preceding rows, getting where the row in memory is.
+
+the 'x' coordinate represents the column in which the pixel is located. multiplying it by  bpp/8 gives the total number of bytes in all preceding pixels within the same row. the division by 8 is necessary because the bpp represents the number of bits per pixel, and each byte is 8 bits. (?)
 
 # resources
 
