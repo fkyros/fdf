@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+        */
+/*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:44:17 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/11/24 13:03:20 by gade-oli         ###   ########.fr       */
+/*   Updated: 2023/12/26 23:23:49 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/fdf.h"
 
-void	create_window(t_fdf *fdf)
+/**
+ * creates and allocates the mlx window and memory image
+ */
+void	set_mlx(t_fdf *fdf)
 {
 	fdf->mlx = malloc(sizeof(t_mlx));
 	if (!fdf->mlx)
@@ -23,15 +26,24 @@ void	create_window(t_fdf *fdf)
 	fdf->mlx->win = mlx_new_window(fdf->mlx->ptr, WIN_WIDTH, WIN_HEIGHT, WIN_NAME);
 	if (!fdf->mlx->win)
 		exit_error("error creating window display");
+	fdf->mlx->img = mlx_new_image(fdf->mlx->ptr, WIN_WIDTH, WIN_HEIGHT);
+	if (!fdf->mlx->img)
+		exit_error("error creating memory image");
+	fdf->mlx->img_addr = mlx_get_data_addr(fdf->mlx->img, &fdf->mlx->bpp, \
+            &fdf->mlx->line_length, &fdf->mlx->endian);
+	if (!fdf->mlx->img_addr)
+		exit_error("error allocating memory image");
 }
 
 //TODO: explain the offset formula !!!
 //TODO: introduce color by argument
-void	my_pixel_put(t_mlx *mlx, int x, int y, int color)
+void	my_pixel_put(t_mlx *mlx, int x, int y)
 {
 	char	*pixel_pos;
 	int		offset;
+	int 	color;
 
+	color = 0x00FFFFFF;
 	if (x >= 0 && x <= WIN_WIDTH && y >= 0 && y <= WIN_HEIGHT)
 	{
 		offset = y * mlx->line_length + x * (mlx->bpp / 8);
@@ -45,21 +57,6 @@ void	my_pixel_put(t_mlx *mlx, int x, int y, int color)
 
 void	print_instructions(t_mlx *mlx)
 {
-	mlx_string_put(mlx->ptr, mlx->win, 300, 300, TEXT_COLOR, \
+	mlx_string_put(mlx->ptr, mlx->win, 20, 20, TEXT_COLOR, \
 			"ESC to exit");
-}
-
-
-void	create_image(t_mlx *mlx)
-{
-	mlx->img = mlx_new_image(mlx->ptr, WIN_WIDTH, WIN_HEIGHT);
-	if (!mlx->img)
-		exit_error("error creating the image");
-	mlx->img_addr = mlx_get_data_addr(mlx->img, &mlx->bpp, &mlx->line_length, &mlx->endian);
-	//if (mlx->bpp != 32)
-	//	exit_error("system not supported: bpp != 32");
-	
-	//TODO: meter support a distintos bpp¿
-	//TODO: pintar
-	//mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->img, 0, 0);
 }

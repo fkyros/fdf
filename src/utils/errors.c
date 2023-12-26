@@ -26,7 +26,6 @@ int	ft_error(char *msg)
 /**
  * prints in stderr a given error message and exits the process
  */
-
 void	exit_error(char *msg)
 {
 	ft_putstr_fd("ERROR: ", 2);

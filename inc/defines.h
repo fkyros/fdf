@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+        */
+/*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 20:48:49 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/11/13 13:26:27 by gade-oli         ###   ########.fr       */
+/*   Updated: 2023/12/26 22:27:11 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef DEFINES_H
 # define DEFINES_H
 
 # define WIN_NAME "gade-oli fdf :)"
-# define WIN_WIDTH 720
-# define WIN_HEIGHT 480
+# define WIN_WIDTH 1080
+# define WIN_HEIGHT 1080
+
 # define ZOOM 20
 
 # define PGUP 126
@@ -33,13 +33,8 @@
 # define X 7
 # define Q 12
 
-# ifndef FAIL
-#  define FAIL 1
-# endif
-
-# ifndef SUCCESS
-#  define SUCCESS 0
-# endif
+# define FAIL 1
+# define SUCCESS 0
 
 # define TEXT_COLOR 0x00EAEAEA
 
@@ -61,6 +56,12 @@ typedef struct s_map
 	int		zoom;
 	int		**z_matrix;
 }	t_map;
+
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}	t_point;
 
 typedef struct s_fdf
 {

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+         #
+#    By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/22 19:44:28 by gade-oli          #+#    #+#              #
-#    Updated: 2023/11/03 18:57:12 by gade-oli         ###   ########.fr        #
+#    Updated: 2023/12/26 23:29:38 by gade-oli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,13 +27,17 @@ CFLAGS = -Wall -Wextra -Werror -g
 SRC = src/fdf.c \
 	  src/utils/errors.c \
 	  src/utils/free_matrix.c \
-	  src/parser/read_file.c \
-	  src/parser/print_map.c \
-	  src/graphics/window.c \
-	  src/graphics/draw.c \
-	  src/graphics/keyhooks.c
+	  src/utils/abs.c \
+	  src/parser.c \
+	  src/print_map.c \
+	  src/window.c \
+	  src/draw.c \
+	  src/keyhooks.c
 
 OBJ = $(SRC:src/%.c=bin/%.o)
+
+INC = inc/defines.h \
+	  inc/fdf.h
 
 #libft-----------------------------------------------------------
 
@@ -72,7 +76,7 @@ $(PRINTF):
 		@make --directory=$(PRINTF_DIR)
 		@echo $(GREEN)"ft_printf compiled!"$(RESET)
 
-$(NAME):	$(LIBFT) $(PRINTF) $(OBJ)
+$(NAME):	$(INC) $(LIBFT) $(PRINTF) $(OBJ)
 		$(CC) $(CFLAGS) $(MLX_FLAGS) $(OBJ) $(LIBFT) $(PRINTF) $(MLX) -o $(NAME)
 		@echo $(GREEN)"fdf compiled!"$(RESET)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+        */
+/*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 20:20:37 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/11/13 13:26:17 by gade-oli         ###   ########.fr       */
+/*   Updated: 2023/12/26 23:27:46 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	fill_matrix(char *line, int *z_line)
 	int		i;
 	char	**nums;
 
-	nums = ft_split(line, ' '); 
+	nums = ft_split(line, ' ');
 	if (!nums)
 		exit_error("memory error on split in fill_matrix");
 	i = 0;
@@ -86,13 +86,28 @@ void	fill_matrix(char *line, int *z_line)
 	free(nums);
 }
 
+int	proper_extension(char *file)
+{
+	char	*extension;
+
+	ft_printf("path: \"%s\"\n", file);
+	extension = ft_strrchr(file, '.');
+	if (!extension)
+		return (0);
+	if (ft_strcmp(extension, ".fdf"))
+		return (0);
+	return (1);
+}
+
 t_map	*read_map(char *file)
 {
 	t_map	*map;
 	int		i;
-	int 	fd;
+	int		fd;
 	char	*line;
 
+	if (!proper_extension(file))
+		exit_error("map file has to be an .fdf extension");
 	map = malloc(sizeof(t_map));
 	if (!map)
 		exit_error("memory error while creating map");
@@ -123,24 +138,4 @@ t_map	*read_map(char *file)
 	map->zoom = ZOOM;
 	close(fd);
 	return (map);
-}
-
-int	proper_extension(char *file)
-{
-	char	*extension;
-
-	ft_printf("path: \"%s\"\n", file);
-	extension = ft_strrchr(file, '.');
-	if (!extension)
-		return (0);
-	if (ft_strcmp(extension, ".fdf"))
-		return (0);
-	return (1);
-}
-
-t_map	*generate_map(char *file)
-{
-	if (!proper_extension(file))
-		exit_error("map file has to be an .fdf extension");
-	return (read_map(file));
 }

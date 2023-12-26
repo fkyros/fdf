@@ -1,0 +1,22 @@
+100:
+- proyección isometrica
+- incluir altura Z
+- implementar X para salir de forma limpia (NO LEAKS)
+- norminette 
+    - parser.c
+    - draw.c
+- borrar print_map
+
+125:
+- gradiente de color
+- zoom in and out con mouse y teclado
+- rotar 
+- trasladar
+- proyección extra (paralela o cónica)
+- keyhooks en linux (?)
+
+readme:
+- incluir explicación del funcionamiento de bresenham <----------- !!!!!!!! (1)
+    - añadir imagenes ilustrativas
+    - explicar concepto general
+    - explicar implementación del algoritmo

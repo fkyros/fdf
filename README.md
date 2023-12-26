@@ -23,11 +23,14 @@ mlx is a bit hard to comprehend, but only the math aside is another story. let m
 
 ### bresenham
 
-Bresenham's line algorithm: simple and rapid method that determines the points with a close approximation of a straight line between two points
+bresenham's line algorithm: simple and rapid method that determines the points with a close approximation of a straight line between two points
 
 !!!!!add image coordinates
 
-the reason i chose this algorithm is because of its efficiency, by only using substraction, addition and multiplication you can draw anything.
+the reason why I chose this algorithm is because of its efficiency, by only using substraction, addition and multiplication, you can draw anything.
+
+lets see how it works:
+
 
 ## minilibx
 
@@ -58,8 +61,6 @@ a windows is made up of pixels. a pixel stores 4 different values: ALPHA and RGB
 
 (usually) each of these values occupies 1B of memory, so every pixel requires 4B of memory (ARGB econding). if this numbers do not ring a bell to you, get your bits per pixel with the `mlx_get_color_value()` function.
 
-when a 
-
 #### why use mlx images instead of pixel\_put?
 
 using pixel put takes way longer than managing an image in memory. to display just one pixel it has to access the program, draw the pixel on the desired coordinate, and return an integer. 
@@ -83,6 +84,8 @@ the 'x' coordinate represents the column in which the pixel is located. multiply
 this could haven't happened without these golden archives:
 
 [bresenham](https://digitalbunker.dev/bresenhams-line-algorithm/)
-[mlx docs](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html)
+[mlx student docs](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html)
 [mlx tutorial](https://github.com/Gontjarow/MiniLibX/tree/master/docs)
 [rgb slider](http://www.cknuckles.com/rgbsliders.html)
+[mlx images tuto](https://github.com/keuhdall/images_example)
+[color linear gradient](https://github.com/VBrazhnik/FdF/wiki/How-to-create-linear-gradient%3F)
