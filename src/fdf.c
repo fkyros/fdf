@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 20:25:52 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/12/26 20:25:34 by gade-oli         ###   ########.fr       */
+/*   Updated: 2023/12/27 17:37:47 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	t_fdf	*fdf;
 
 	if (argc != 2)
-		return (ft_error("usage: ./fdf <map_name>\n"));
+		return (ft_error("usage: ./fdf <map_name>"));
 	fdf = malloc(sizeof(t_fdf));
 	if (!fdf)
 		exit_error("error creating fdf");
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 	set_mlx(fdf);
 	draw_map(fdf);
 	mlx_put_image_to_window(fdf->mlx->ptr, fdf->mlx->win, fdf->mlx->img, 0, 0);
-	print_instructions(fdf->mlx);
+	//print_instructions(fdf->mlx);
 	mlx_key_hook(fdf->mlx->win, deal_key, fdf);
 	mlx_loop(fdf->mlx->ptr);
 	return (SUCCESS);

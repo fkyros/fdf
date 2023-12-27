@@ -6,11 +6,11 @@
 /*   By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:54:53 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/11/03 14:57:39 by gade-oli         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:42:26 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/fdf.h"
+#include "../inc/fdf.h"
 
 void	print_map(t_fdf *fdf)
 {

@@ -11,7 +11,7 @@ follow the instructions of [official minilibx repo](https://github.com/42Paris/m
 
 ## how to draw
 
-mlx is a bit hard to comprehend, but only the math aside is another story. let me introduce you to concepts and vocabulary I came across during the realization of this project in order to succeed in it (or at least ty it)
+mlx is a bit hard to comprehend, but only the math aside is another story. let me introduce you to concepts and vocabulary I came across during the realization of this project in order to succeed in it (or at least try it)
 
 - rasterisation: taking an image described in vectors and convert it into a series of pixels which, when displayed together look, create the image which was represented via shapes
 
@@ -20,6 +20,8 @@ mlx is a bit hard to comprehend, but only the math aside is another story. let m
 - bits per pixel (bpp): the amount of color information contained in each pixel in an image. also called 'depth of image'
 
 - size line (line length): number of bytes used to store one line of the image in memory
+
+- interpolation: process in which we use known values to guess unknown values
 
 ### bresenham
 
@@ -31,12 +33,55 @@ the reason why I chose this algorithm is because of its efficiency, by only usin
 
 lets see how it works:
 
+```
+void    bresenham(t_fdf *fdf, t_point from, t_point to)
+{
+    t_point diff;
+    t_point sign;
+    t_point point;
+    int     err;
+    int     tmp;
+
+	//the differences refer to how distant are the initial to the final points
+    diff.x = ft_abs(to.x - from.x);
+    diff.y = ft_abs(to.y - from.y);
+	//the sign defines how should we advance inside the grid
+    sign.x = -1;
+    sign.y = -1;
+    if (from.x < to.x)
+        sign.x = 1;
+    if (from.y < to.y)
+        sign.y = 1;
+
+    point.x = from.x;
+    point.y = from.y;
+    err = diff.x - diff.y; //decision parameter to know in which direction move (x or y) in each step (dx - dy its convention)
+    //in each instance, the mesh point nearest to the desired line segment is selected
+    while (point.x != to.x || point.y != to.y)
+    {
+        img_pixel_put(fdf->mlx, point.x, point.y); //paint
+        tmp = err * 2; //used for optimization in the algo: removes redundant operations
+        if (tmp > - diff.y) //if the dx portion on err is bigger than the dy
+        {
+            point.x += sign.x; //we have to diminish the error by getting closer to the direction of x
+            err -= diff.y; //we reduce the error by "dy" factor because of increasing 1 nudge in the x direction
+        }
+        if (tmp < diff.x)
+        {
+            point.y += sign.y;
+            err += diff.x;
+        }
+    }
+}
+```
+the decision making inside the loop is based on HOW the error parameter is made
+
 
 ## minilibx
 
 oh god. here we go.
 
-to compile properly make sure to add `-lmlx -framework OpenGL -framework AppKit` flags!!!
+to compile properly (on macOS) make sure to add `-lmlx -framework OpenGL -framework AppKit` flags!!!
 
 - `mlx_init()` initializes the graphic system to your computer. returns a pointer identifying your mlx unning instance
 
@@ -89,3 +134,4 @@ this could haven't happened without these golden archives:
 [rgb slider](http://www.cknuckles.com/rgbsliders.html)
 [mlx images tuto](https://github.com/keuhdall/images_example)
 [color linear gradient](https://github.com/VBrazhnik/FdF/wiki/How-to-create-linear-gradient%3F)
+[isometric intro](https://stackoverflow.com/questions/1189830/isometric-projection-in-2d-coordinate-system)

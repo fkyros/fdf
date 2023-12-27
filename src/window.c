@@ -6,11 +6,11 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:44:17 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/12/26 23:23:49 by gade-oli         ###   ########.fr       */
+/*   Updated: 2023/12/27 20:36:10 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/fdf.h"
+#include "../inc/fdf.h"
 
 /**
  * creates and allocates the mlx window and memory image
@@ -37,7 +37,7 @@ void	set_mlx(t_fdf *fdf)
 
 //TODO: explain the offset formula !!!
 //TODO: introduce color by argument
-void	my_pixel_put(t_mlx *mlx, int x, int y)
+void	img_pixel_put(t_mlx *mlx, int x, int y)
 {
 	char	*pixel_pos;
 	int		offset;

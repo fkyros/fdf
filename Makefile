@@ -6,7 +6,7 @@
 #    By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/22 19:44:28 by gade-oli          #+#    #+#              #
-#    Updated: 2023/12/26 23:29:38 by gade-oli         ###   ########.fr        #
+#    Updated: 2023/12/27 16:47:23 by gade-oli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit -lm
 
 all:	$(NAME)
 
-bin/%.o:	src/%.c inc/fdf.h
+bin/%.o:	src/%.c $(INC)
 		@echo $(BLUE)"compiling binaries..."$(RESET)
 		@mkdir -p $(@D)
 		$(CC) $(CFLAGS) -c $< -o $@
@@ -76,7 +76,7 @@ $(PRINTF):
 		@make --directory=$(PRINTF_DIR)
 		@echo $(GREEN)"ft_printf compiled!"$(RESET)
 
-$(NAME):	$(INC) $(LIBFT) $(PRINTF) $(OBJ)
+$(NAME):	$(LIBFT) $(PRINTF) $(OBJ)
 		$(CC) $(CFLAGS) $(MLX_FLAGS) $(OBJ) $(LIBFT) $(PRINTF) $(MLX) -o $(NAME)
 		@echo $(GREEN)"fdf compiled!"$(RESET)
 

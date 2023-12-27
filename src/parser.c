@@ -6,11 +6,11 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 20:20:37 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/12/26 23:27:46 by gade-oli         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:41:35 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/fdf.h"
+#include "../inc/fdf.h"
 
 int	get_map_width(char *file)
 {
@@ -136,6 +136,7 @@ t_map	*read_map(char *file)
 	}
 	map->z_matrix[i] = NULL;
 	map->zoom = ZOOM;
+	map->padding = PADDING;
 	close(fd);
 	return (map);
 }

@@ -6,11 +6,11 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:04:57 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/12/26 23:21:56 by gade-oli         ###   ########.fr       */
+/*   Updated: 2023/12/27 21:01:21 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/fdf.h"
+#include "../inc/fdf.h"
 
 //TODO: explain algorithm and demonstration on README
 
@@ -21,37 +21,47 @@ t_point	get_point(t_map *map, int x, int y)
 	point.x = x * map->zoom;
 	point.y = y * map->zoom;
 	//TODO: add isometric
+	//int temp_x = (point.x - point.y) * cos(0.78539816); //cos(30º)
+    //int temp_y = (point.x + point.y) * sin(0.78539816);
+    //point.x = temp_x;
+    //point.y = temp_y;
 	return (point);
 }
 
 void    bresenham(t_fdf *fdf, t_point from, t_point to)
 {
-	int	dx = ft_abs(to.x - from.x);
-	int dy = ft_abs(to.y - from.y);
-	int x_sign = -1;
-	int y_sign = -1;
+	t_point	diff;
+	t_point	sign;
+	t_point	point;
+	int		err;
+	int		tmp;
+	
+	diff.x = ft_abs(to.x - from.x);
+	diff.y = ft_abs(to.y - from.y);
+	sign.x = -1;
+	sign.y = -1;
 	if (from.x < to.x)
-		x_sign = 1;
+		sign.x = 1;
 	if (from.y < to.y)
-		y_sign = 1;
+		sign.y = 1;
 
-	int x = from.x;
-	int y = from.y;
-	int err = dx - dy;
-	int tmp;
-	while (x != to.x || y != to.y)
+	point.x = from.x;
+	point.y = from.y;
+	err = diff.x - diff.y; //decision parameter to know in which direction move (x or y) in each step (dx - dy its convention)
+	//in each instance, the mesh point nearest to the desired line segment is selected
+	while (point.x != to.x || point.y != to.y)
 	{
-		my_pixel_put(fdf->mlx, x, y);
-		tmp = err * 2;
-		if (tmp > -dy)
+		img_pixel_put(fdf->mlx, point.x, point.y); //paint
+		tmp = err * 2; //used for optimization in the algo: removes redundant operations
+		if (tmp > - diff.y) //
 		{
-			err -= dy;
-			x += x_sign;
+			point.x += sign.x; //
+			err -= diff.y; //we reduce the error since we are getting closer to the final y
 		}
-		if (tmp < dx)
+		if (tmp < diff.x)
 		{
-			err += dx;
-			y += y_sign;
+			point.y += sign.y;
+			err += diff.x;
 		}
 	}
 }

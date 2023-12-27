@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 20:48:49 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/12/26 22:27:11 by gade-oli         ###   ########.fr       */
+/*   Updated: 2023/12/27 20:05:28 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 # define DEFINES_H
 
 # define WIN_NAME "gade-oli fdf :)"
-# define WIN_WIDTH 1080
-# define WIN_HEIGHT 1080
+# define WIN_WIDTH 1280
+# define WIN_HEIGHT 720
 
+# define PADDING 20
 # define ZOOM 20
+# define DEG45INRAD 0.78539816
 
 # define PGUP 126
 # define PGDOWN 125
@@ -27,11 +29,14 @@
 # define A 0
 # define S 1
 # define D 2
-# define SPACE 49
 # define ESC 53
-# define CCENTER 8
-# define X 7
-# define Q 12
+# define PLUS 30 
+# define MINUS 44
+# define SPACE 49 //change color progressively while pressed?
+# define C 8 //center raster 
+# define R 15 //reset values for zoom and position to default
+# define X 7 //?
+# define Q 12 //?
 
 # define FAIL 1
 # define SUCCESS 0
@@ -53,8 +58,9 @@ typedef struct s_map
 {
 	int		width;
 	int		height;
-	int		zoom;
 	int		**z_matrix;
+	int		zoom;
+	int		padding;
 }	t_map;
 
 typedef struct s_point
