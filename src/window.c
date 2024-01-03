@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:44:17 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/12/27 20:36:10 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/01/03 13:52:35 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	img_pixel_put(t_mlx *mlx, int x, int y)
 	int 	color;
 
 	color = 0x00FFFFFF;
-	if (x >= 0 && x <= WIN_WIDTH && y >= 0 && y <= WIN_HEIGHT)
+	if (x >= 0 && x < WIN_WIDTH && y >= 0 && y < WIN_HEIGHT)
 	{
 		offset = y * mlx->line_length + x * (mlx->bpp / 8);
 		pixel_pos = mlx->img_addr + offset;

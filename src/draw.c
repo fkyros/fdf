@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:04:57 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/12/27 21:01:21 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/01/02 22:37:32 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,18 @@
 t_point	get_point(t_map *map, int x, int y)
 {
 	t_point	point;
+	int		z;
 
+	//add space between points
 	point.x = x * map->zoom;
 	point.y = y * map->zoom;
+	z = map->z_matrix[y][x];
 	//TODO: add isometric
-	//int temp_x = (point.x - point.y) * cos(0.78539816); //cos(30º)
-    //int temp_y = (point.x + point.y) * sin(0.78539816);
-    //point.x = temp_x;
-    //point.y = temp_y;
+	int temp_x = (point.x - point.y) * cos(DEG45INRAD); //cos(30º)
+    int temp_y = (-z * map->ceiling) + (point.x + point.y) * sin(DEG45INRAD);
+    point.x = temp_x;
+	point.y = temp_y;
+	//point.y = (WIN_HEIGHT / 2) - z + temp_y; //translate the figure to the center
 	return (point);
 }
 
@@ -71,6 +75,7 @@ void	draw_map(t_fdf *fdf)
 	int	x;
 	int y;
 
+	fdf->map->ceiling = 2; //TODO: automate this with keyhook
 	y = 0;
 	if (!fdf->map->zoom)
 		return ;

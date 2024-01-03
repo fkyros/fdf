@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 19:57:04 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/12/27 20:35:53 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/01/02 21:39:14 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 void	set_mlx(t_fdf *fdf);
 t_map	*read_map(char *file);
 
+int		deal_red_button(t_fdf *fdf);
+int		deal_click(int click, int x, int y, t_fdf *fdf);
 int		deal_key(int key, t_fdf *fdf);
 void	print_map(t_fdf *fdf);
 int		proper_extension(char *file);
