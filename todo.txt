@@ -1,22 +1,36 @@
 100:
-- proyección isometrica
-- incluir altura Z
-- implementar X para salir de forma limpia (NO LEAKS)
+- fix refresh bug when changing perspective
+- refactor
 - norminette 
-    - parser.c
-    - draw.c
-- borrar print_map
+    - parser.c -> varios ficheros?
+    - draw.c -> bresenham y get_point
+- gestión de errores
+    - mapas sin permisos
+    - mapas con algo distinto a espacios
+    - mapas con codigos hexadecimales (?)
+- TODOs pendientes
+    - ids de perspectiva
+    - añadir ifndef en defines.h (?)
+    - borrar comentarios dentro de las funciones
+    - borrar key pressed message en deal_key
+    - sustituir returns 0 por SUCCESS o FAILURE
+- incluir controles en pantalla
 
 125:
+- zoom con mouse y teclado
+- trasladar con mouse y teclado
 - gradiente de color
-- zoom in and out con mouse y teclado
-- rotar 
-- trasladar
-- proyección extra (paralela o cónica)
+    - varias opciones de color con un atajo de teclado(?)
+- rotar con mouse y teclado
+- proyección extra (ortogonal superior(?) y lateral)
+- añadir al inicio el nº bytes que carga de ficheros (mapas extra grandes) para la espera
+
 - keyhooks en linux (?)
 
 readme:
+- incluir explicación de img_pixel_put
 - incluir explicación del funcionamiento de bresenham <----------- !!!!!!!! (1)
     - añadir imagenes ilustrativas
     - explicar concepto general
     - explicar implementación del algoritmo
+- incluir explicación de la perspectiva isometrica

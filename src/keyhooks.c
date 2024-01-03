@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyhooks.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+        */
+/*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:14:13 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/02 22:03:20 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/01/03 21:02:58 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,11 @@ int	deal_click(int click, int x, int y, t_fdf *fdf)
 {
 	if (click)
 		ft_printf("click id: %d\nx: %d\ny: %d\n", click, x, y);
-		//print_instructions(fdf->mlx);
 	(void)fdf;
 	return (0);
 }
 
-int	deal_red_button(t_fdf *fdf)
+int	deal_close(t_fdf *fdf)
 {
 	ft_printf("bye!\n");
 	mlx_clear_window(fdf->mlx->ptr, fdf->mlx->win);
@@ -37,14 +36,13 @@ int	deal_red_button(t_fdf *fdf)
 
 int	deal_key(int key, t_fdf *fdf)
 {
-	//TODO: check if the key pressed is valid
-	ft_printf("key pressed: %d\n", key);
+	ft_printf("DEBUG -> key pressed: %d\n", key); //TODO: erase when finish debug phase
 	if (key == ESC)
+		deal_close(fdf);
+	if (key == P)
 	{
-		mlx_clear_window(fdf->mlx->ptr, fdf->mlx->win);
-		mlx_destroy_window(fdf->mlx->ptr, fdf->mlx->win);
-		exit(0);
+		fdf->map->perspective = 30;
+		display_fdf(fdf);
 	}
-	(void)fdf;
-	return (0);
+	return (SUCCESS);
 }

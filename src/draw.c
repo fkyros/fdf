@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:04:57 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/02 22:37:32 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/01/03 20:50:02 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,18 @@ t_point	get_point(t_map *map, int x, int y)
 	point.y = y * map->zoom;
 	z = map->z_matrix[y][x];
 	//TODO: add isometric
-	int temp_x = (point.x - point.y) * cos(DEG45INRAD); //cos(30º)
-    int temp_y = (-z * map->ceiling) + (point.x + point.y) * sin(DEG45INRAD);
-    point.x = temp_x;
+	int temp_x = 0, temp_y = 0;
+	if (map->perspective == 30)
+	{
+		temp_x = (point.x - point.y) * cos(DEG30INRAD);
+    	temp_y = (-z * map->ceiling) + (point.x + point.y) * sin(DEG30INRAD); //-z parameter adds cealing (or fictional height) to the figure
+	}
+	else if (map->perspective == 45)
+	{
+		temp_x = (point.x - point.y) * cos(DEG45INRAD); 
+    	temp_y = (-z * map->ceiling) + (point.x + point.y) * sin(DEG45INRAD); //-z parameter adds cealing (or fictional height) to the figure
+	}
+	point.x = temp_x;
 	point.y = temp_y;
 	//point.y = (WIN_HEIGHT / 2) - z + temp_y; //translate the figure to the center
 	return (point);
@@ -40,6 +49,7 @@ void    bresenham(t_fdf *fdf, t_point from, t_point to)
 	int		err;
 	int		tmp;
 	
+	//TODO: mover a funcion auxiliar
 	diff.x = ft_abs(to.x - from.x);
 	diff.y = ft_abs(to.y - from.y);
 	sign.x = -1;
@@ -75,7 +85,6 @@ void	draw_map(t_fdf *fdf)
 	int	x;
 	int y;
 
-	fdf->map->ceiling = 2; //TODO: automate this with keyhook
 	y = 0;
 	if (!fdf->map->zoom)
 		return ;

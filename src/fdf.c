@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+        */
+/*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 20:25:52 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/02 21:40:41 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/01/03 20:57:00 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
-
-void	fre(void)
-{
-	system("leaks -q fdf");
-}
 
 int	main(int argc, char **argv)
 {
@@ -27,15 +22,12 @@ int	main(int argc, char **argv)
 	if (!fdf)
 		exit_error("error creating fdf");
 	fdf->map = read_map(argv[1]);
-	print_map(fdf);	//TODO: delete function and src file (and header)
 	set_mlx(fdf);
-	draw_map(fdf);
-	mlx_put_image_to_window(fdf->mlx->ptr, fdf->mlx->win, fdf->mlx->img, 0, 0);
-	//print_instructions(fdf->mlx);
+	init_map_params(fdf->map);
+	display_fdf(fdf);
 	mlx_key_hook(fdf->mlx->win, deal_key, fdf);
 	mlx_mouse_hook(fdf->mlx->win, deal_click, fdf);
-	mlx_hook(fdf->mlx->win, RED_DESTROY, 0, deal_red_button, fdf); //closes display with "red x" button
+	mlx_hook(fdf->mlx->win, RED_DESTROY, 0, deal_close, fdf); //closes display with "red x" button
 	mlx_loop(fdf->mlx->ptr);
-	fre(); //TODO: quitar
 	return (SUCCESS);
 }

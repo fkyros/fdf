@@ -6,14 +6,14 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:44:17 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/03 13:52:35 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/01/03 21:05:19 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
 /**
- * creates and allocates the mlx window and memory image
+ * creates and allocates the mlx window display and memory image to store the figure
  */
 void	set_mlx(t_fdf *fdf)
 {
@@ -35,6 +35,15 @@ void	set_mlx(t_fdf *fdf)
 		exit_error("error allocating memory image");
 }
 
+/**
+ * initialises map visual parameters that can later be changed through mlx events
+*/
+void	init_map_params(t_map *map)
+{
+	map->ceiling = 2;
+	map->perspective = 45; //TODO: change the ids
+}
+
 //TODO: explain the offset formula !!!
 //TODO: introduce color by argument
 void	img_pixel_put(t_mlx *mlx, int x, int y)
@@ -50,13 +59,32 @@ void	img_pixel_put(t_mlx *mlx, int x, int y)
 		pixel_pos = mlx->img_addr + offset;
 		*(unsigned int *)pixel_pos = color;
 	}
-	else
-		ft_printf("error displaying point (%d,%d) \
-				-> out of bounds (%d, %d)\n", x, y, WIN_WIDTH, WIN_HEIGHT);
+	//else
+	//	ft_printf("error displaying point (%d,%d) \
+	//			-> out of bounds (%d, %d)\n", x, y, WIN_WIDTH, WIN_HEIGHT);
 }
 
+/**
+ * displays on the screen how to interact with the program
+*/
 void	print_instructions(t_mlx *mlx)
 {
-	mlx_string_put(mlx->ptr, mlx->win, 20, 20, TEXT_COLOR, \
-			"ESC to exit");
+	int y;
+
+	y = 0;
+	mlx_string_put(mlx->ptr, mlx->win, 20, y + 20, TEXT_COLOR, \
+			"press ESC to exit");
+	mlx_string_put(mlx->ptr, mlx->win, 20, y + 40, TEXT_COLOR, \
+			"press P to change perspective");
+}
+
+/**
+ * erases (draws all in black) the screen and draws the fdf figure given the map parameters
+*/
+void	display_fdf(t_fdf *fdf)
+{
+	mlx_clear_window(fdf->mlx->ptr, fdf->mlx->win);
+	draw_map(fdf);
+	mlx_put_image_to_window(fdf->mlx->ptr, fdf->mlx->win, fdf->mlx->img, 0, 0); //TODO: why two figures hell nah
+	print_instructions(fdf->mlx);
 }
