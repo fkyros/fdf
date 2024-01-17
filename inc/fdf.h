@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 19:57:04 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/03 20:45:09 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/01/17 22:13:20 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 void	set_mlx(t_fdf *fdf);
 void	display_fdf(t_fdf *fdf);
-void	img_pixel_put(t_mlx *mlx, int x, int y);
+void	img_pixel_put(t_mlx *mlx, int x, int y, int color);
 void	print_instructions(t_mlx *mlx);
 void	init_map_params(t_map *map);
 

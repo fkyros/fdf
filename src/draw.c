@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:04:57 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/03 20:50:02 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/01/17 22:12:59 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ void    bresenham(t_fdf *fdf, t_point from, t_point to)
 	point.y = from.y;
 	err = diff.x - diff.y; //decision parameter to know in which direction move (x or y) in each step (dx - dy its convention)
 	//in each instance, the mesh point nearest to the desired line segment is selected
-	while (point.x != to.x || point.y != to.y)
+	while (!(point.x == to.x && point.y == to.y))
 	{
-		img_pixel_put(fdf->mlx, point.x, point.y); //paint
+		img_pixel_put(fdf->mlx, point.x, point.y, WHITE); //paint
 		tmp = err * 2; //used for optimization in the algo: removes redundant operations
 		if (tmp > - diff.y) //
 		{

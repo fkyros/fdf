@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 20:48:49 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/03 15:49:42 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/01/17 22:12:33 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@
 # define MOUSEUP 4 //scroll with your finger upwards on the mouse wheel
 # define MOUSEDOWN 5
 # define RED_DESTROY 17 //red button cross from the display
+
+# define BLACK 0x0
+# define WHITE 0x00FFFFFF
 
 # define FAIL 1
 # define SUCCESS 0

@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:44:17 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/03 21:05:19 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/01/17 22:23:06 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,11 @@ void	init_map_params(t_map *map)
 
 //TODO: explain the offset formula !!!
 //TODO: introduce color by argument
-void	img_pixel_put(t_mlx *mlx, int x, int y)
+void	img_pixel_put(t_mlx *mlx, int x, int y, int color)
 {
 	char	*pixel_pos;
 	int		offset;
-	int 	color;
 
-	color = 0x00FFFFFF;
 	if (x >= 0 && x < WIN_WIDTH && y >= 0 && y < WIN_HEIGHT)
 	{
 		offset = y * mlx->line_length + x * (mlx->bpp / 8);
@@ -78,12 +76,31 @@ void	print_instructions(t_mlx *mlx)
 			"press P to change perspective");
 }
 
+// turns all the screen to black
+void	clear_window(t_mlx *mlx)
+{
+	int	i;
+	int	j;
+	
+	i = 0;
+	while (i < WIN_HEIGHT)
+	{
+		j = 0;
+		while (j < WIN_WIDTH)
+		{
+			img_pixel_put(mlx, j, i, BLACK);
+			j++;
+		}
+		i++;
+	}
+}
+
 /**
  * erases (draws all in black) the screen and draws the fdf figure given the map parameters
 */
 void	display_fdf(t_fdf *fdf)
 {
-	mlx_clear_window(fdf->mlx->ptr, fdf->mlx->win);
+	clear_window(fdf->mlx);
 	draw_map(fdf);
 	mlx_put_image_to_window(fdf->mlx->ptr, fdf->mlx->win, fdf->mlx->img, 0, 0); //TODO: why two figures hell nah
 	print_instructions(fdf->mlx);

@@ -1,5 +1,4 @@
 100:
-- fix refresh bug when changing perspective
 - refactor
 - norminette 
     - parser.c -> varios ficheros?
