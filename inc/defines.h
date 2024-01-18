@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 20:48:49 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/17 22:12:33 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/01/18 12:32:48 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@
 # define X 7 //?
 # define Q 12 //?
 # define P 35 //change perspective
+# define M 46
+# define N 45
 # define MOUSELEFT 1
 # define MOUSERIGHT 2
 # define MOUSEMIDDLE 3
@@ -46,7 +48,7 @@
 # define MOUSEDOWN 5
 # define RED_DESTROY 17 //red button cross from the display
 
-# define BLACK 0x0
+# define BLACK 0
 # define WHITE 0x00FFFFFF
 
 # define FAIL 1
@@ -80,6 +82,7 @@ typedef struct s_point
 {
 	int	x;
 	int	y;
+	int	color;
 }	t_point;
 
 typedef struct s_fdf

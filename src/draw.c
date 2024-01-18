@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:04:57 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/17 22:12:59 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/01/18 12:29:13 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,51 @@
 
 //TODO: explain algorithm and demonstration on README
 
+void	apply_zoom(t_map *map, t_point *point)
+{
+	point->x *= map->zoom;
+	point->y *= map->zoom;
+}
+
+//returns the modified value for y coordinate, applying z dimension
+int	apply_cealing(t_map *map, int prev_x, int prev_y)
+{
+	int	z;
+	int	ceiling;
+
+	z = map->z_matrix[prev_y][prev_x];
+	ceiling = -z * map->ceiling;
+	return (ceiling);
+}
+
 t_point	get_point(t_map *map, int x, int y)
 {
 	t_point	point;
 	int		z;
 
+	point.x = x;
+	point.y = y;
+	point.color = WHITE; //TODO: añadir gradiente de color en una funcion 
 	//add space between points
-	point.x = x * map->zoom;
-	point.y = y * map->zoom;
+	apply_zoom(map, &point);
 	z = map->z_matrix[y][x];
 	//TODO: add isometric
 	int temp_x = 0, temp_y = 0;
 	if (map->perspective == 30)
 	{
 		temp_x = (point.x - point.y) * cos(DEG30INRAD);
-    	temp_y = (-z * map->ceiling) + (point.x + point.y) * sin(DEG30INRAD); //-z parameter adds cealing (or fictional height) to the figure
+    	temp_y = (point.x + point.y) * sin(DEG30INRAD); //-z parameter adds cealing (or fictional height) to the figure
 	}
 	else if (map->perspective == 45)
 	{
 		temp_x = (point.x - point.y) * cos(DEG45INRAD); 
-    	temp_y = (-z * map->ceiling) + (point.x + point.y) * sin(DEG45INRAD); //-z parameter adds cealing (or fictional height) to the figure
+    	temp_y = (point.x + point.y) * sin(DEG45INRAD) - 6*map->zoom; //-z parameter adds cealing (or fictional height) to the figure
 	}
-	point.x = temp_x;
-	point.y = temp_y;
-	//point.y = (WIN_HEIGHT / 2) - z + temp_y; //translate the figure to the center
+	temp_y += apply_cealing(map, x, y);
+	//point.x = temp_x;
+	//point.y = temp_y;
+	point.x = temp_x + (WIN_WIDTH / 2); //translate the figure to the center
+	point.y = temp_y + (WIN_HEIGHT / 2); //translate the figure to the center
 	return (point);
 }
 
@@ -65,7 +86,7 @@ void    bresenham(t_fdf *fdf, t_point from, t_point to)
 	//in each instance, the mesh point nearest to the desired line segment is selected
 	while (!(point.x == to.x && point.y == to.y))
 	{
-		img_pixel_put(fdf->mlx, point.x, point.y, WHITE); //paint
+		img_pixel_put(fdf->mlx, point.x, point.y, point.color); //paint
 		tmp = err * 2; //used for optimization in the algo: removes redundant operations
 		if (tmp > - diff.y) //
 		{

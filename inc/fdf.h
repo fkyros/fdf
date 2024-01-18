@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 19:57:04 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/17 22:13:20 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/01/18 12:16:05 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int		deal_key(int key, t_fdf *fdf);
 
 void    bresenham(t_fdf *fdf, t_point from, t_point to);
 void	draw_map(t_fdf *fdf);
+void	apply_zoom(t_map *map, t_point *point);
 
 int		ft_error(char *msg);
 void	exit_error(char *msg);

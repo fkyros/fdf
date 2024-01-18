@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:14:13 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/03 21:02:58 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/01/18 12:30:53 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,20 @@ int	deal_key(int key, t_fdf *fdf)
 {
 	ft_printf("DEBUG -> key pressed: %d\n", key); //TODO: erase when finish debug phase
 	if (key == ESC)
-		deal_close(fdf);
-	if (key == P)
 	{
-		fdf->map->perspective = 30;
-		display_fdf(fdf);
+		deal_close(fdf);
+		return (SUCCESS);
 	}
+	if (key == P)
+		fdf->map->perspective = 30;
+	if (key == PLUS)
+		fdf->map->zoom += 5;
+	if (key == MINUS)
+		fdf->map->zoom -= 5;
+	if (key == M)
+		fdf->map->ceiling += 5;
+	if (key == N)
+		fdf->map->ceiling -= 5;
+	display_fdf(fdf);
 	return (SUCCESS);
 }

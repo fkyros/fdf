@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:44:17 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/17 22:23:06 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/01/18 12:34:10 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,14 @@ void	print_instructions(t_mlx *mlx)
 	int y;
 
 	y = 0;
-	mlx_string_put(mlx->ptr, mlx->win, 20, y + 20, TEXT_COLOR, \
+	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
 			"press ESC to exit");
-	mlx_string_put(mlx->ptr, mlx->win, 20, y + 40, TEXT_COLOR, \
+	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
 			"press P to change perspective");
+	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
+			"press +/- to zoom in/out");
+	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
+			"press m/n to increase/decrease figure's height");
 }
 
 // turns all the screen to black
