@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:44:17 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/18 15:05:56 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/01/18 19:33:11 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,13 @@ void	print_instructions(t_mlx *mlx)
 	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
 			"press p to change perspective");
 	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
-			"press +/- to zoom in/out");
+			"press +/- to zoom in/out (or use the mouse wheel!)");
 	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
 			"press m/n to increase/decrease figure's altitude");
 	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
 			"press r to reset figure");
+	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
+			"press z to enter/exit zen mode");
 }
 
 /**

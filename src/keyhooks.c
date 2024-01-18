@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:14:13 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/18 15:36:56 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/01/18 19:23:24 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,12 @@ int	deal_key(int key, t_fdf *fdf)
 	if (key == ESC)
 		return (deal_close(fdf));
 	if (key == P)
-		fdf->map->perspective = DEG30INRAD;
+	{
+		if (fdf->map->perspective == DEG30INRAD)
+			fdf->map->perspective = DEG45INRAD;
+		else
+			fdf->map->perspective = DEG30INRAD;
+	}
 	if (key == PLUS)
 		fdf->map->zoom += 5;
 	if (key == MINUS)
@@ -56,6 +61,13 @@ int	deal_key(int key, t_fdf *fdf)
 		fdf->map->altitude -= 2;
 	if (key == R)
 		init_map_params(fdf->map);
+	if (key == Z)
+	{
+		if (fdf->map->show_instructions == ON)
+			fdf->map->show_instructions = OFF;
+		else
+			fdf->map->show_instructions = ON;
+	}
 	display_fdf(fdf);
 	return (SUCCESS);
 }

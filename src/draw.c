@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:04:57 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/18 15:18:37 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/01/18 20:30:09 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ t_point	get_point(t_map *map, int x, int y)
     temp_y = (point.x + point.y) * sin(map->perspective);
 	temp_y += apply_altitude(map, x, y);
 	
-	point.x = temp_x + (WIN_WIDTH / 2); //translate the figure to the center
-	point.y = temp_y + (WIN_HEIGHT / 2); //translate the figure to the center
+	point.x = temp_x + (WIN_WIDTH - (map->width * cos(map->perspective) * map->zoom)) / 2;
+	point.y = temp_y + (WIN_HEIGHT - (map->height * sin(map->perspective) * map->zoom)) / 2;
 	return (point);
 }
 
@@ -42,7 +42,7 @@ void    bresenham(t_fdf *fdf, t_point from, t_point to)
 	t_point	point;
 	int		err;
 	int		tmp;
-	
+
 	//TODO: mover a funcion auxiliar
 	diff.x = ft_abs(to.x - from.x);
 	diff.y = ft_abs(to.y - from.y);

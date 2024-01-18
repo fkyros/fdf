@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 20:48:49 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/18 15:30:06 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/01/18 20:13:13 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 720
 
-# define PADDING 20
 # define ZOOM 20
 # define DEG45INRAD 0.78539816 //45º = pi/6 rads
 # define DEG30INRAD 0.52359877 //30º = pi/4 rads
@@ -39,8 +38,10 @@
 # define R 15 //reset values for zoom and position to default
 # define M 46 //increase ceiling
 # define N 45 //reduce ceiling
-# define MOUSELEFT 1
-# define MOUSERIGHT 2
+# define Z 6 //enter/exit zen mode
+# define MOUSELEFT 1 //translate the figure by dragging
+# define MOUSERIGHT 2 //increase/decrease altitude by dragging
+# define MOUSEMIDDLE 3 //rotate the figure by dragging
 # define MOUSEUP 4 //scroll with your finger upwards on the mouse wheel
 # define MOUSEDOWN 5
 # define RED_DESTROY 17 //red button cross from the display
@@ -50,6 +51,9 @@
 
 # define FAIL 1
 # define SUCCESS 0
+
+# define ON 1
+# define OFF 0
 
 # define TEXT_COLOR 0x00EAEAEA
 
@@ -73,6 +77,7 @@ typedef struct s_map
 	int		padding;
 	int		altitude;
 	float	perspective;
+	int		show_instructions;
 }	t_map;
 
 typedef struct s_point

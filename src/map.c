@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+        */
+/*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 13:19:01 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/18 15:17:40 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/01/18 20:20:24 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 void	init_map_params(t_map *map)
 {
 	map->zoom = ZOOM;
-	map->padding = PADDING;
 	map->altitude = 2;
 	map->perspective = DEG45INRAD;
+	map->show_instructions = ON;
 }
 
 /**
@@ -34,7 +34,8 @@ void	display_fdf(t_fdf *fdf)
 	draw_map(fdf);
 	mlx_put_image_to_window(fdf->mlx->ptr, fdf->mlx->win, \
 			fdf->mlx->img, 0, 0);
-	print_instructions(fdf->mlx);
+	if (fdf->map->show_instructions)
+		print_instructions(fdf->mlx);
 }
 
 /**
