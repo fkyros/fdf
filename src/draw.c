@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:04:57 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/18 12:29:13 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:18:37 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,49 +14,22 @@
 
 //TODO: explain algorithm and demonstration on README
 
-void	apply_zoom(t_map *map, t_point *point)
-{
-	point->x *= map->zoom;
-	point->y *= map->zoom;
-}
-
-//returns the modified value for y coordinate, applying z dimension
-int	apply_cealing(t_map *map, int prev_x, int prev_y)
-{
-	int	z;
-	int	ceiling;
-
-	z = map->z_matrix[prev_y][prev_x];
-	ceiling = -z * map->ceiling;
-	return (ceiling);
-}
-
 t_point	get_point(t_map *map, int x, int y)
 {
 	t_point	point;
 	int		z;
+	int temp_x = 0, temp_y = 0;
 
 	point.x = x;
 	point.y = y;
-	point.color = WHITE; //TODO: añadir gradiente de color en una funcion 
-	//add space between points
+	point.color = WHITE; 
 	apply_zoom(map, &point);
 	z = map->z_matrix[y][x];
-	//TODO: add isometric
-	int temp_x = 0, temp_y = 0;
-	if (map->perspective == 30)
-	{
-		temp_x = (point.x - point.y) * cos(DEG30INRAD);
-    	temp_y = (point.x + point.y) * sin(DEG30INRAD); //-z parameter adds cealing (or fictional height) to the figure
-	}
-	else if (map->perspective == 45)
-	{
-		temp_x = (point.x - point.y) * cos(DEG45INRAD); 
-    	temp_y = (point.x + point.y) * sin(DEG45INRAD) - 6*map->zoom; //-z parameter adds cealing (or fictional height) to the figure
-	}
-	temp_y += apply_cealing(map, x, y);
-	//point.x = temp_x;
-	//point.y = temp_y;
+
+	temp_x = (point.x - point.y) * cos(map->perspective);
+    temp_y = (point.x + point.y) * sin(map->perspective);
+	temp_y += apply_altitude(map, x, y);
+	
 	point.x = temp_x + (WIN_WIDTH / 2); //translate the figure to the center
 	point.y = temp_y + (WIN_HEIGHT / 2); //translate the figure to the center
 	return (point);
@@ -86,7 +59,7 @@ void    bresenham(t_fdf *fdf, t_point from, t_point to)
 	//in each instance, the mesh point nearest to the desired line segment is selected
 	while (!(point.x == to.x && point.y == to.y))
 	{
-		img_pixel_put(fdf->mlx, point.x, point.y, point.color); //paint
+		img_pixel_put(fdf->mlx, point.x, point.y, WHITE); //paint
 		tmp = err * 2; //used for optimization in the algo: removes redundant operations
 		if (tmp > - diff.y) //
 		{
@@ -98,28 +71,5 @@ void    bresenham(t_fdf *fdf, t_point from, t_point to)
 			point.y += sign.y;
 			err += diff.x;
 		}
-	}
-}
-
-void	draw_map(t_fdf *fdf)
-{
-	int	x;
-	int y;
-
-	y = 0;
-	if (!fdf->map->zoom)
-		return ;
-	while (y < fdf->map->height)
-	{
-		x = 0;
-		while (x < fdf->map->width)
-		{
-			if (x < fdf->map->width - 1)
-				bresenham(fdf, get_point(fdf->map, x, y), get_point(fdf->map, x + 1, y));
-			if (y < fdf->map->height - 1)
-				bresenham(fdf, get_point(fdf->map, x, y), get_point(fdf->map, x, y + 1));
-			x++;
-		}
-		y++;
 	}
 }

@@ -6,7 +6,7 @@
 #    By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/22 19:44:28 by gade-oli          #+#    #+#              #
-#    Updated: 2024/01/03 20:11:35 by gade-oli         ###   ########.fr        #
+#    Updated: 2024/01/18 14:56:47 by gade-oli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,11 @@ SRC = src/fdf.c \
 	  src/utils/free_matrix.c \
 	  src/utils/abs.c \
 	  src/parser.c \
+	  src/parser_utils.c \
 	  src/window.c \
 	  src/draw.c \
+	  src/draw_utils.c \
+	  src/map.c \
 	  src/keyhooks.c
 
 OBJ = $(SRC:src/%.c=bin/%.o)

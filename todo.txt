@@ -1,24 +1,20 @@
 100:
-- refactor
-- norminette 
-    - parser.c -> varios ficheros?
+- refactor & norminette 
     - draw.c -> bresenham y get_point
 - gestión de errores
     - mapas sin permisos
     - mapas con algo distinto a espacios
     - mapas con codigos hexadecimales (?)
-- TODOs pendientes
-    - ids de perspectiva
-    - añadir ifndef en defines.h (?)
-    - borrar comentarios dentro de las funciones
-    - borrar key pressed message en deal_key
-    - sustituir returns 0 por SUCCESS o FAILURE
-- incluir controles en pantalla
+	- comprobar leaks
+- sustituir returns 0 por SUCCESS o FAILURE
+- free generico para boton de ESC, rojo y exit: liberar todo lo alocado
+- cambiar gestión de perspectivas: ids
 
 125:
+- añadir mouse???????????????????????????????????????????????
 - zoom con mouse y teclado
 - trasladar con mouse y teclado
-- gradiente de color
+- gradiente de color (en get_point() de draw.c)
     - varias opciones de color con un atajo de teclado(?)
 - rotar con mouse y teclado
 - proyección extra (ortogonal superior(?) y lateral)

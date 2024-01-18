@@ -6,11 +6,34 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 20:20:37 by gade-oli          #+#    #+#             */
-/*   Updated: 2023/12/27 16:41:35 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:00:04 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
+
+int	count_and_check_line_width(char **matrix, char *line)
+{
+	int	re_width;
+	int	width;
+
+	width = 0;
+	re_width = 0;
+	matrix = ft_split(line, ' ');
+	if (!width)
+		while (matrix[width])
+			width++;
+	else
+	{
+		while (matrix[re_width])
+			re_width++;
+		if (width != re_width)
+			exit_error("bad map format: different line widths");
+	}
+	free_matrix(matrix);
+	free(line);
+	return (width);
+}
 
 int	get_map_width(char *file)
 {
@@ -18,29 +41,15 @@ int	get_map_width(char *file)
 	int		fd;
 	char	*line;
 	char	**matrix;
-	int		re_width;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		exit_error("cannot open the file");
 	line = get_next_line(fd);
-	width = 0;
-	re_width = 0;
+	matrix = NULL;
 	while (line)
 	{
-		matrix = ft_split(line, ' ');
-		if (!width)
-			while (matrix[width])
-				width++;
-		else
-		{
-			while (matrix[re_width])
-				re_width++;
-			if (width != re_width)
-				exit_error("bad map format: different line widths");
-		}
-		free_matrix(matrix);
-		free(line);
+		width = count_and_check_line_width(matrix, line);
 		line = get_next_line(fd);
 	}
 	close(fd);
@@ -68,53 +77,12 @@ int	get_map_height(char *file)
 	return (height);
 }
 
-void	fill_matrix(char *line, int *z_line)
+void	create_and_fill_z_matrix(t_map *map, char *file)
 {
-	int		i;
-	char	**nums;
-
-	nums = ft_split(line, ' ');
-	if (!nums)
-		exit_error("memory error on split in fill_matrix");
-	i = 0;
-	while (nums[i])
-	{
-		z_line[i] = ft_atoi(nums[i]);
-		free(nums[i]);
-		i++;
-	}
-	free(nums);
-}
-
-int	proper_extension(char *file)
-{
-	char	*extension;
-
-	ft_printf("path: \"%s\"\n", file);
-	extension = ft_strrchr(file, '.');
-	if (!extension)
-		return (0);
-	if (ft_strcmp(extension, ".fdf"))
-		return (0);
-	return (1);
-}
-
-t_map	*read_map(char *file)
-{
-	t_map	*map;
 	int		i;
 	int		fd;
 	char	*line;
 
-	if (!proper_extension(file))
-		exit_error("map file has to be an .fdf extension");
-	map = malloc(sizeof(t_map));
-	if (!map)
-		exit_error("memory error while creating map");
-	map->width = get_map_width(file);
-	map->height = get_map_height(file);
-	if (!map->width || !map->height)
-		exit_error("map not valid");
 	i = 0;
 	map->z_matrix = malloc(sizeof(int *) * map->height);
 	while (i < map->height + 1)
@@ -135,8 +103,22 @@ t_map	*read_map(char *file)
 		line = get_next_line(fd);
 	}
 	map->z_matrix[i] = NULL;
-	map->zoom = ZOOM;
-	map->padding = PADDING;
 	close(fd);
+}
+
+t_map	*read_map(char *file)
+{
+	t_map	*map;
+
+	if (!proper_extension(file))
+		exit_error("map file has to be an .fdf extension");
+	map = malloc(sizeof(t_map));
+	if (!map)
+		exit_error("memory error while creating map");
+	map->width = get_map_width(file);
+	map->height = get_map_height(file);
+	if (!map->width || !map->height)
+		exit_error("map not valid");
+	create_and_fill_z_matrix(map, file);
 	return (map);
 }
