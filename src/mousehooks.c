@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:35:49 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/02/01 19:27:35 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/02/01 19:36:28 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@ int deal_click(int click, int x, int y, t_fdf *fdf)
 {
 	if (!click)
 		return (FAIL);
-	if (click == MOUSERIGHT)
-	{
-		fdf->mouse->x = x;
-		fdf->mouse->y = y;
+	fdf->mouse->click = click;
+	fdf->mouse->x = x;
+	fdf->mouse->y = y;
+	if (click == MOUSELEFT || click == MOUSERIGHT)
 		fdf->mouse->drag = 1;
-	}
 	if (click == MOUSEUP)
 		fdf->map->zoom += 5;
 	if (click == MOUSEDOWN)
@@ -33,31 +32,29 @@ int deal_click(int click, int x, int y, t_fdf *fdf)
 	return (SUCCESS);
 }
 
-int	deal_release(int click, int x, int y, t_fdf *fdf)
+int	deal_mouse_motion(int x, int y, t_fdf *fdf)
 {
-	if (!click)
+	if (!fdf->mouse->drag)
 		return (FAIL);
-	if (click == MOUSERIGHT)
-		fdf->mouse->drag = 0;
-	(void)x;
+	if (fdf->mouse->click == MOUSERIGHT)
+	{
+		if (fdf->mouse->x < x) //TODO
+			fdf->map->altitude += 1;
+		if (fdf->mouse->x > x) //TODO
+			fdf->map->altitude -= 1;
+	}
+	//TODO: implement translation
 	(void)y;
 	display_fdf(fdf);
 	return (SUCCESS);
 }
 
-int	deal_mouse_motion(int x, int y, t_fdf *fdf)
+int	deal_release(int click, int x, int y, t_fdf *fdf)
 {
-	//if (!click)
-	//	return (FAIL);
-	if (!fdf->mouse->drag)
+	if (!click)
 		return (FAIL);
-	//if (click == MOUSERIGHT)
-	//{
-		if (fdf->mouse->x < x)
-			fdf->map->altitude += 1;
-		if (fdf->mouse->x > x)
-			fdf->map->altitude -= 1;
-	//}
+	fdf->mouse->drag = 0;
+	(void)x;
 	(void)y;
 	display_fdf(fdf);
 	return (SUCCESS);
