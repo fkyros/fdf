@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 20:48:49 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/18 20:13:13 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/02/01 19:15:08 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,23 @@
 # define SPACE 49 //change color progressively while pressed?
 # define C 8 //center raster 
 # define P 35 //change perspective
+# define I 34
+# define O 31
 # define R 15 //reset values for zoom and position to default
 # define M 46 //increase ceiling
 # define N 45 //reduce ceiling
 # define Z 6 //enter/exit zen mode
+
 # define MOUSELEFT 1 //translate the figure by dragging
 # define MOUSERIGHT 2 //increase/decrease altitude by dragging
 # define MOUSEMIDDLE 3 //rotate the figure by dragging
 # define MOUSEUP 4 //scroll with your finger upwards on the mouse wheel
 # define MOUSEDOWN 5
+
 # define RED_DESTROY 17 //red button cross from the display
+# define MOUSE_PRESS 4
+# define MOUSE_RELEASE 5
+# define MOUSE_MOTION 6
 
 # define BLACK 0
 # define WHITE 0x00FFFFFF
@@ -87,10 +94,18 @@ typedef struct s_point
 	int	color;
 }	t_point;
 
+typedef	struct s_mouse
+{
+	int	x;
+	int	y;
+	int	drag;
+}	t_mouse;
+
 typedef struct s_fdf
 {
 	t_map	*map;
 	t_mlx	*mlx;
+	t_mouse	*mouse;
 }	t_fdf;
 
 #endif

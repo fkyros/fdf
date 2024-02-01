@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:44:17 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/18 19:33:11 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/02/01 19:26:45 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,16 @@ void	set_mlx(t_fdf *fdf)
 }
 
 //TODO: explain the offset formula !!!
-void	img_pixel_put(t_mlx *mlx, int x, int y, int color)
+void	img_pixel_put(t_mlx *mlx, t_point p)
 {
 	char	*pixel_pos;
 	int		offset;
 
-	if (!(x >= 0 && x < WIN_WIDTH && y >= 0 && y < WIN_HEIGHT))
+	if (!(p.x >= 0 && p.x < WIN_WIDTH && p.y >= 0 && p.y < WIN_HEIGHT))
 		return ;
-	offset = y * mlx->line_length + x * (mlx->bpp / 8);
+	offset = p.y * mlx->line_length + p.x * (mlx->bpp / 8);
 	pixel_pos = mlx->img_addr + offset;
-	*(unsigned int *)pixel_pos = color;
+	*(unsigned int *)pixel_pos = p.color;
 }
 
 /**
@@ -61,7 +61,9 @@ void	print_instructions(t_mlx *mlx)
 	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
 			"press ESC to exit");
 	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
-			"press p to change perspective");
+			"press p for 45RAD perspective");
+	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
+			"press i for isometric perspective");
 	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
 			"press +/- to zoom in/out (or use the mouse wheel!)");
 	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
@@ -77,8 +79,9 @@ void	print_instructions(t_mlx *mlx)
  */
 void	clear_window(t_mlx *mlx)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	t_point	p;
 
 	i = 0;
 	while (i < WIN_HEIGHT)
@@ -86,7 +89,10 @@ void	clear_window(t_mlx *mlx)
 		j = 0;
 		while (j < WIN_WIDTH)
 		{
-			img_pixel_put(mlx, j, i, BLACK);
+			p.x = j;
+			p.y = i;
+			p.color = BLACK;
+			img_pixel_put(mlx, p);
 			j++;
 		}
 		i++;

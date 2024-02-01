@@ -6,26 +6,11 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:14:13 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/18 19:23:24 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/02/01 18:37:28 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
-
-/**
- * executed when a mouse click is done INSIDE the display
- */
-int	deal_click(int click, int x, int y, t_fdf *fdf)
-{
-	if (click)
-		ft_printf("click id: %d\nx: %d\ny: %d\n", click, x, y);
-	if (click == MOUSEUP)
-		fdf->map->zoom += 5;
-	if (click == MOUSEDOWN)
-		fdf->map->zoom -= 5;
-	display_fdf(fdf);
-	return (SUCCESS);
-}
 
 /**
  * in charge of closing the window whenever 
@@ -34,6 +19,7 @@ int	deal_click(int click, int x, int y, t_fdf *fdf)
 int	deal_close(t_fdf *fdf)
 {
 	ft_printf("bye!\n");
+	ft_printf(" - gade-oli :)\n");
 	mlx_clear_window(fdf->mlx->ptr, fdf->mlx->win);
 	mlx_destroy_window(fdf->mlx->ptr, fdf->mlx->win);
 	exit(0);
@@ -42,15 +28,13 @@ int	deal_close(t_fdf *fdf)
 
 int	deal_key(int key, t_fdf *fdf)
 {
+	printf("%d\n", key);
 	if (key == ESC)
 		return (deal_close(fdf));
 	if (key == P)
-	{
-		if (fdf->map->perspective == DEG30INRAD)
-			fdf->map->perspective = DEG45INRAD;
-		else
-			fdf->map->perspective = DEG30INRAD;
-	}
+		fdf->map->perspective = DEG45INRAD;
+	if (key == I)
+		fdf->map->perspective = DEG30INRAD;
 	if (key == PLUS)
 		fdf->map->zoom += 5;
 	if (key == MINUS)

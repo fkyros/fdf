@@ -6,7 +6,7 @@
 #    By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/22 19:44:28 by gade-oli          #+#    #+#              #
-#    Updated: 2024/01/18 14:56:47 by gade-oli         ###   ########.fr        #
+#    Updated: 2024/02/01 18:42:03 by gade-oli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRC = src/fdf.c \
 	  src/draw.c \
 	  src/draw_utils.c \
 	  src/map.c \
+	  src/mousehooks.c \
 	  src/keyhooks.c
 
 OBJ = $(SRC:src/%.c=bin/%.o)
@@ -57,7 +58,7 @@ PRINTF = $(PRINTF_DIR)libftprintf.a
 #MLX_LIB = $(MLX_DIR)/libmlx_$(UNAME).a
 MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit -lm
 
-#CAUTION: apply this on linux system
+# !!! CAUTION: apply this on linux system
 #MLX_FLAGS = -lmlx -lXext -lX11
 #MLX = /usr/local/lib/libmlx.a
 

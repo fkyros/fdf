@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 13:19:01 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/18 20:20:24 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/02/01 19:25:54 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_map_params(t_map *map)
 {
 	map->zoom = ZOOM;
 	map->altitude = 2;
-	map->perspective = DEG45INRAD;
+	map->perspective = DEG30INRAD;
 	map->show_instructions = ON;
 }
 

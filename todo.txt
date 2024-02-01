@@ -1,6 +1,7 @@
 100:
 - refactor & norminette 
     - draw.c -> bresenham y get_point
+	- fdf.c -> hooks mlx
 - gestión de errores
     - mapas sin permisos
     - mapas con algo distinto a espacios

@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:04:57 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/18 20:30:09 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/02/01 18:06:39 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ t_point	get_point(t_map *map, int x, int y)
 {
 	t_point	point;
 	int		z;
-	int temp_x = 0, temp_y = 0;
+	int 	temp_x = 0;
+	int		temp_y = 0;
 
 	point.x = x;
 	point.y = y;
@@ -55,15 +56,16 @@ void    bresenham(t_fdf *fdf, t_point from, t_point to)
 
 	point.x = from.x;
 	point.y = from.y;
+	point.color = WHITE;
 	err = diff.x - diff.y; //decision parameter to know in which direction move (x or y) in each step (dx - dy its convention)
 	//in each instance, the mesh point nearest to the desired line segment is selected
 	while (!(point.x == to.x && point.y == to.y))
 	{
-		img_pixel_put(fdf->mlx, point.x, point.y, WHITE); //paint
+		img_pixel_put(fdf->mlx, point); //paint
 		tmp = err * 2; //used for optimization in the algo: removes redundant operations
-		if (tmp > - diff.y) //
+		if (tmp > - diff.y)
 		{
-			point.x += sign.x; //
+			point.x += sign.x;
 			err -= diff.y; //we reduce the error since we are getting closer to the final y
 		}
 		if (tmp < diff.x)

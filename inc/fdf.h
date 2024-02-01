@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 19:57:04 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/18 15:36:18 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/02/01 19:18:29 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 //window.c
 void	set_mlx(t_fdf *fdf);
-void	img_pixel_put(t_mlx *mlx, int x, int y, int color);
+void	img_pixel_put(t_mlx *mlx, t_point p);
 void	print_instructions(t_mlx *mlx);
 void	clear_window(t_mlx *mlx);
 
@@ -44,8 +44,12 @@ void	fill_matrix(char *line, int *z_line);
 
 //keyhooks.c
 int		deal_close(t_fdf *fdf);
-int		deal_click(int click, int x, int y, t_fdf *fdf);
 int		deal_key(int key, t_fdf *fdf);
+
+//mousehooks.c
+int		deal_click(int click, int x, int y, t_fdf *fdf);
+int		deal_release(int click, int x, int y, t_fdf *fdf);
+int		deal_mouse_motion(int x, int y, t_fdf *fdf);
 
 //draw.c
 void    bresenham(t_fdf *fdf, t_point from, t_point to);
