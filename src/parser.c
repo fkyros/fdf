@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_file.c                                        :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 20:20:37 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/18 15:00:04 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/02/01 20:33:49 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ t_map	*read_map(char *file)
 {
 	t_map	*map;
 
-	if (!proper_extension(file))
+	if (bad_extension(file))
 		exit_error("map file has to be an .fdf extension");
 	map = malloc(sizeof(t_map));
 	if (!map)

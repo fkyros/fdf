@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mousehooks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+        */
+/*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:35:49 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/02/01 19:36:28 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/02/01 22:03:19 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /**
  * executed when a mouse click is done INSIDE the display
  */
-int deal_click(int click, int x, int y, t_fdf *fdf)
+int	deal_click(int click, int x, int y, t_fdf *fdf)
 {
 	if (!click)
 		return (FAIL);
@@ -39,9 +39,9 @@ int	deal_mouse_motion(int x, int y, t_fdf *fdf)
 	if (fdf->mouse->click == MOUSERIGHT)
 	{
 		if (fdf->mouse->x < x) //TODO
-			fdf->map->altitude += 1;
+			fdf->map->altitude += 0.5;
 		if (fdf->mouse->x > x) //TODO
-			fdf->map->altitude -= 1;
+			fdf->map->altitude -= 0.5;
 	}
 	//TODO: implement translation
 	(void)y;

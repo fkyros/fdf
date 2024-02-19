@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:04:57 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/02/01 18:06:39 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/02/02 17:24:19 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,27 @@ t_point	get_point(t_map *map, int x, int y)
 	return (point);
 }
 
+void	setup_bresenham(t_point *diff, t_point *dir, t_point *from, t_point *to)
+{
+	diff->x = ft_abs(to->x - from->x);
+	diff->y = ft_abs(to->y - from->y);
+	dir->x = -1;
+	dir->y = -1;
+	if (from->x < to->x)
+		dir->x = 1;
+	if (from->y < to->y)
+		dir->y = 1;
+}
+
 void    bresenham(t_fdf *fdf, t_point from, t_point to)
 {
-	t_point	diff;
-	t_point	sign;
 	t_point	point;
+	t_point	diff;
+	t_point	dir;
 	int		err;
 	int		tmp;
 
-	//TODO: mover a funcion auxiliar
-	diff.x = ft_abs(to.x - from.x);
-	diff.y = ft_abs(to.y - from.y);
-	sign.x = -1;
-	sign.y = -1;
-	if (from.x < to.x)
-		sign.x = 1;
-	if (from.y < to.y)
-		sign.y = 1;
-
+	setup_bresenham(&diff, &dir, &from, &to);
 	point.x = from.x;
 	point.y = from.y;
 	point.color = WHITE;
@@ -65,12 +68,12 @@ void    bresenham(t_fdf *fdf, t_point from, t_point to)
 		tmp = err * 2; //used for optimization in the algo: removes redundant operations
 		if (tmp > - diff.y)
 		{
-			point.x += sign.x;
+			point.x += dir.x;
 			err -= diff.y; //we reduce the error since we are getting closer to the final y
 		}
 		if (tmp < diff.x)
 		{
-			point.y += sign.y;
+			point.y += dir.y;
 			err += diff.x;
 		}
 	}

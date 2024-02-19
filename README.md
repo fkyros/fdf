@@ -3,18 +3,24 @@
 
 this project is about representing a landscape as a 3D object in which all surfaces are outlined in lines.
 
-!!!!!add image of my own fdf
+!!!!!add image/video of my own fdf
 
 ## how to install
 
 follow the instructions of [official minilibx repo](https://github.com/42Paris/minilibx-linux) to build and include the 'libmlx.a' and 'mlx.h' to your system
-    tl;dr: you should have the libmlx.a on your /usr/local/bin and mlx.h on /usr/local/include
+    tl;dr: you should have the libmlx.a on your /usr/local/bin and mlx.h on /usr/local/include (also you can modify the MLX_DIR on the makefile if you know wacha doin')
+
+just clone the repo and build it!
+```
+git clone --recurse-submodules git@github.com:fkyros/fdf.git
+make
+```
 
 # so cool! i wanna do it as well!!!
 
 this project is so visual and interesting to develop that i needed to record everything needed to develop it. all you need is some C knowledge, refresh some maths, and a lot of patience.
 i tried to gather all the useful information i found through the net and summarize it for me, so i hope this can help to anyone interested. 
-if you are keen to know everything and as curious as me, make sure to check the resources i used to get to know more about the topics covered! enjoy :)
+if you are keen to know everything and as curious as me, make sure to check the [resources](#resources) i used to get to know more about the topics covered! enjoy :)
 
 ## preamble
 
@@ -34,7 +40,10 @@ mlx is a bit hard to comprehend, but only the math aside is another story. let m
 
 oh god. here we go.
 
+in short, minilib is the graphical library we will use in order to create the project.
+
 to compile properly (on macOS) make sure to add `-lmlx -framework OpenGL -framework AppKit` flags!!! for other windows, good luck. if you are a linux user, check the flags on my makefile if it works for your distro :)
+here are some of the functions you may encounter in order for it to work
 
 - `mlx_init()` initializes the graphic system to your computer. returns a pointer identifying your mlx unning instance
 
@@ -68,7 +77,7 @@ using pixel put takes way longer than managing an image in memory. to display ju
 we rather buffer everything onto an image where we input all the information we want, and then draw everything at once.
 
 ##### writing our own pixel\_put for mlx images
-in order to write on the proper place of the window, we need to calculate where on memory is this pixel located
+in order to write on the proper place of the window image, we need to calculate where on memory is this pixel located
 
 given two coordinates (a point, make sure its in bounds of the window size!!) and the mlx\_image memory direction, we can calculate the position in the window with:
 
@@ -77,7 +86,10 @@ given two coordinates (a point, make sure its in bounds of the window size!!) an
 
 'y' is the row where you want to write the pixel, multiplying it by the line length of a row, you get the total number of bytes in all preceding rows, getting where the row in memory is.
 
-the 'x' coordinate represents the column in which the pixel is located. multiplying it by  bpp/8 gives the total number of bytes in all preceding pixels within the same row. the division by 8 is necessary because the bpp represents the number of bits per pixel, and each byte is 8 bits. (?)
+the 'x' coordinate represents the column in which the pixel is located. multiplying it by bpp/8 gives the total number of bytes in all preceding pixels within the same row. the division by 8 is necessary because the bpp represents the number of bits per pixel, and each byte is 8 bits. (?)
+
+
+
 
 ## yea but how do i draw?
 
@@ -130,6 +142,8 @@ void    bresenham(t_fdf *fdf, t_point from, t_point to)
 }
 ```
 the decision making inside the loop is based on HOW the error parameter is made
+
+
 
 ### great grid, but where is the z dimension??
 TODO: explain isometric and orthogonemtric perspectives

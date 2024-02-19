@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:14:13 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/02/01 18:37:28 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/02/01 20:31:23 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,12 @@ int	deal_close(t_fdf *fdf)
 	ft_printf(" - gade-oli :)\n");
 	mlx_clear_window(fdf->mlx->ptr, fdf->mlx->win);
 	mlx_destroy_window(fdf->mlx->ptr, fdf->mlx->win);
-	exit(0);
+	exit(SUCCESS);
 	return (SUCCESS);
 }
 
 int	deal_key(int key, t_fdf *fdf)
 {
-	printf("%d\n", key);
 	if (key == ESC)
 		return (deal_close(fdf));
 	if (key == P)
@@ -44,7 +43,7 @@ int	deal_key(int key, t_fdf *fdf)
 	if (key == N)
 		fdf->map->altitude -= 2;
 	if (key == R)
-		init_map_params(fdf->map);
+		init_params(fdf);
 	if (key == Z)
 	{
 		if (fdf->map->show_instructions == ON)

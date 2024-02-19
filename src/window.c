@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:44:17 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/02/01 19:26:45 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/02/01 20:38:21 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ void	set_mlx(t_fdf *fdf)
 			&fdf->mlx->line_length, &fdf->mlx->endian);
 	if (!fdf->mlx->img_addr)
 		exit_error("error allocating memory image");
+	fdf->mouse = malloc(sizeof(t_mouse));
+	if (!fdf->mouse)
+		exit_error("error creating mouse instance");
 }
 
 //TODO: explain the offset formula !!!
@@ -69,6 +72,8 @@ void	print_instructions(t_mlx *mlx)
 	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
 			"press m/n to increase/decrease figure's altitude");
 	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
+			"    (try dragging while pressing right click!)");
+	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
 			"press r to reset figure");
 	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
 			"press z to enter/exit zen mode");
@@ -97,4 +102,14 @@ void	clear_window(t_mlx *mlx)
 		}
 		i++;
 	}
+}
+
+void	set_mlx_hooks(t_fdf *fdf)
+{
+	mlx_key_hook(fdf->mlx->win, deal_key, fdf);
+	mlx_mouse_hook(fdf->mlx->win, deal_click, fdf);
+	mlx_hook(fdf->mlx->win, RED_DESTROY, 0, deal_close, fdf);
+	mlx_hook(fdf->mlx->win, MOUSE_PRESS, 0, deal_click, fdf);
+	mlx_hook(fdf->mlx->win, MOUSE_RELEASE, 0, deal_release, fdf);
+	mlx_hook(fdf->mlx->win, MOUSE_MOTION, 0, deal_mouse_motion, fdf);
 }

@@ -13,16 +13,13 @@
 125:
 - proyección extra (ortogonal superior(?) y lateral)
 - trasladar con teclado
-- añadir mouse dragging
-- trasladar con click izq 
-- modificar altitude con click der
+- trasladar con drag click izq 
+- corregir altitude con click der !!!!!!!!!!
 - gradiente de color (en get_point() de draw.c)
     - varias opciones de color con un atajo de teclado(?)
 - ROTAR LA FIGURA
 - añadir al inicio el nº bytes que carga de ficheros (mapas extra grandes) para la espera
 - window resize y entrar en fullscreen o centrado?
-
-- keyhooks en linux (?)
 
 readme:
 - incluir explicación de img_pixel_put
@@ -35,3 +32,4 @@ readme:
 
 extra:
 - haciendo - zoom se invierte figura?? comprobar con otros fdf
+- keyhooks/mousehooks en linux (?)

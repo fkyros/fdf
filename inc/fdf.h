@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 19:57:04 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/02/01 19:31:55 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/02/01 20:33:41 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,16 @@ void	set_mlx(t_fdf *fdf);
 void	img_pixel_put(t_mlx *mlx, t_point p);
 void	print_instructions(t_mlx *mlx);
 void	clear_window(t_mlx *mlx);
+void	set_mlx_hooks(t_fdf *fdf);
 
 //map.c
 void	display_fdf(t_fdf *fdf);
-void	init_map_params(t_map *map);
+void	init_params(t_fdf *fdf);
 void	draw_map(t_fdf *fdf);
 
 //parser.c
 t_map	*read_map(char *file);
-int		proper_extension(char *file);
+int		bad_extension(char *file);
 int		get_map_width(char *file);
 int		get_map_height(char *file);
 void	fill_matrix(char *line, int *z_line);

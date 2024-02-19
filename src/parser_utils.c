@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-oli <gade-oli@student.42madrid>       +#+  +:+       +#+        */
+/*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:35:33 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/01/18 14:38:33 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/02/01 20:33:25 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ void	fill_matrix(char *line, int *z_line)
 /**
  * checks if the input file is named correctly
  */
-int	proper_extension(char *file)
+int	bad_extension(char *file)
 {
 	char	*extension;
 
 	extension = ft_strrchr(file, '.');
 	if (!extension)
-		return (0);
+		return (FAIL);
 	if (ft_strcmp(extension, ".fdf"))
-		return (0);
-	return (1);
+		return (FAIL);
+	return (SUCCESS);
 }

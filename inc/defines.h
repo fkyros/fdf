@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 20:48:49 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/02/01 19:34:04 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/02/01 22:03:00 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ typedef struct s_map
 	int		**z_matrix;
 	int		zoom;
 	int		padding;
-	int		altitude;
+	float	altitude;
 	float	perspective;
 	int		show_instructions;
 }	t_map;
