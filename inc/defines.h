@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 20:48:49 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/02/19 18:30:57 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/02/19 21:12:51 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # define DEG45INRAD 0.78539816 //45º = pi/6 rads
 # define DEG30INRAD 0.52359877 //30º = pi/4 rads
 # define ZOOM_SHIFT 5
+# define MOUSE_ALTITUDE_SHIFT 0.5
+# define ALTITUDE_SHIFT 2
+# define TRANSLATION_SHIFT 15
 
 # define PGUP 126
 # define PGDOWN 125
@@ -85,6 +88,8 @@ typedef struct s_map
 	float	altitude;
 	float	perspective;
 	int		show_instructions;
+	int		translation_x;
+	int		translation_y;
 }	t_map;
 
 typedef struct s_point

@@ -6,7 +6,7 @@
 #    By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/22 19:44:28 by gade-oli          #+#    #+#              #
-#    Updated: 2024/02/01 18:42:03 by gade-oli         ###   ########.fr        #
+#    Updated: 2024/02/19 19:53:53 by gade-oli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,6 @@ SRC = src/fdf.c \
 	  src/parser_utils.c \
 	  src/window.c \
 	  src/draw.c \
-	  src/draw_utils.c \
 	  src/map.c \
 	  src/mousehooks.c \
 	  src/keyhooks.c

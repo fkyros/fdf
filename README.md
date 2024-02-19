@@ -10,7 +10,7 @@ this project is about representing a landscape as a 3D object in which all surfa
 follow the instructions of [official minilibx repo](https://github.com/42Paris/minilibx-linux) to build and include the 'libmlx.a' and 'mlx.h' to your system
     tl;dr: you should have the libmlx.a on your /usr/local/bin and mlx.h on /usr/local/include (also you can modify the MLX_DIR on my makefile if you know wacha doin')
 
-just clone the repo and build it!
+now just clone my repo and build it!
 ```
 git clone --recurse-submodules git@github.com:fkyros/fdf.git
 make
@@ -62,7 +62,7 @@ here are some of the functions you may encounter in order for it to work
 
 make sure to check the [official manual](https://github.com/42Paris/minilibx-linux/tree/master/man/man1) for more detailed information.
 
-#### mlx images
+### mlx images
 
 a windows is made up of pixels. here, a pixel stores 4 different values: ALPHA and RGB color encoding.
 - ALPHA: refers to the opacity of the pixel
@@ -70,13 +70,13 @@ a windows is made up of pixels. here, a pixel stores 4 different values: ALPHA a
 
 (usually) each of these values occupies 1B of memory, so every pixel requires 4B of memory (ARGB econding). if this numbers do not ring a bell to you, get your bits per pixel with the `mlx_get_color_value()` function.
 
-##### why use mlx images instead of pixel\_put?
+#### why use mlx images instead of pixel\_put?
 
 using pixel put takes way longer than managing an image in memory. to display just one pixel it has to access the program, draw the pixel on the desired coordinate, and return an integer. 
 
 we rather buffer everything onto an image where we input all the information we want, and then draw everything at once.
 
-##### writing our own pixel\_put for mlx images
+#### writing our own pixel\_put for mlx images
 in order to write on the proper place of the window image, we need to calculate where on memory is this pixel located
 
 given two coordinates (a point, make sure its in bounds of the window size!!) and the mlx\_image memory direction, we can calculate the position in the window with:
@@ -98,6 +98,8 @@ let me introduce you to Jack Elton Bresenham and his famous algorithm developed 
 his [line plotting algorithm](https://gitlab.cecs.anu.edu.au/pages/2018-S1/courses/comp1100/assignments/02/Bresenham.pdf) is a simple and rapid method that determines the points with a close approximation of a straight line between two points. the reason why I chose this algorithm is because of its efficiency. by only using substraction, addition and multiplication, you can draw almost anything. this will be the basis for the project (given that everything drawn in here are lines lol)
 
 ![rasterizing a line](github_pics/rasterizing_line.gif)
+
+[source pic](https://www.yaldex.com/games-programming/0672323699_ch08lev1sec1.html)
 
 lets see how it works, and my implementation:
 
@@ -144,15 +146,18 @@ void    bresenham(t_fdf *fdf, t_point from, t_point to)
 ```
 the decision making inside the loop is based on HOW the error parameter of the interpolation method is made
 
+now you have to read the whole map and draw it with this algo :)
+
 ### great grid, but where is the z dimension??
 TODO: explain isometric and orthogonemtric perspectives
 
 what we need to do to achieve the classic isometric view and apply altitude to our raster, we need to rotate 45º the grid and squash it in half (as the gif shows)
 
 ![iso grid](github_pics/isometric_grid_transformation.gif)
+
 credits to [Jordan West](https://www.youtube.com/watch?v=04oQ2jOUjkU) for the visuals
 
-after that, apply the altitude value on the z coord. but spoiler!!! its a 2D enviroment, so we need to trick the y axis value to represent this.
+after that, apply the altitude value on the z coord. but spoiler!!! its a 2D enviroment, so we need to [trick the y axis value](https://github.com/VBrazhnik/FdF/wiki/How-to-perform-isometric-transformations%3F) to represent this.
 
 ### OMG can i color it??
 TODO: gradient explanation

@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:14:13 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/02/19 16:54:16 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/02/19 21:13:40 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,22 @@
  */
 int	deal_close(t_fdf *fdf)
 {
-	ft_printf("bye!\n");
-	ft_printf(" - gade-oli :)\n");
 	mlx_clear_window(fdf->mlx->ptr, fdf->mlx->win);
 	mlx_destroy_window(fdf->mlx->ptr, fdf->mlx->win);
 	exit(SUCCESS);
+	return (SUCCESS);
+}
+
+int deal_key_translation(int key, t_fdf *fdf)
+{
+	if (key == PGUP)
+		fdf->map->translation_y -= TRANSLATION_SHIFT;
+	if (key == PGDOWN)
+		fdf->map->translation_y += TRANSLATION_SHIFT;
+	if (key == PGRIGHT)
+		fdf->map->translation_x += TRANSLATION_SHIFT;
+	if (key == PGLEFT)
+		fdf->map->translation_x -= TRANSLATION_SHIFT;
 	return (SUCCESS);
 }
 
@@ -39,9 +50,9 @@ int	deal_key(int key, t_fdf *fdf)
 	if (key == MINUS)
 		fdf->map->zoom -= ZOOM_SHIFT;
 	if (key == M)
-		fdf->map->altitude += 2;
+		fdf->map->altitude += ALTITUDE_SHIFT;
 	if (key == N)
-		fdf->map->altitude -= 2;
+		fdf->map->altitude -= ALTITUDE_SHIFT;
 	if (key == R)
 		init_params(fdf);
 	if (key == Z)
@@ -51,6 +62,7 @@ int	deal_key(int key, t_fdf *fdf)
 		else
 			fdf->map->show_instructions = ON;
 	}
+	deal_key_translation(key, fdf);
 	display_fdf(fdf);
 	return (SUCCESS);
 }

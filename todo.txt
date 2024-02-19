@@ -1,35 +1,34 @@
 100:
-- refactor & norminette 
-    - draw.c -> bresenham y get_point
-	- fdf.c -> hooks mlx
 - gestión de errores
-    - mapas sin permisos
-    - mapas con algo distinto a espacios
-    - mapas con codigos hexadecimales (?)
-	- comprobar leaks
-- sustituir returns 0 por SUCCESS o FAILURE
+    - mapas con algo distinto a espacios -> BUCLE INFINITO
+    - mapas con codigos hexadecimales (?) !!!!!!!!!!!
+	- comprobar leaks !!!!!!!!!!!!!!!!!!!!!!
 - free generico para boton de ESC, rojo y exit: liberar todo lo alocado
 
 125:
-- proyección extra (ortogonal superior(?) y lateral)
-- trasladar con teclado
-- trasladar con drag click izq 
-- corregir altitude con click der !!!!!!!!!!
-- gradiente de color (en get_point() de draw.c)
+- eliminar inversion de la figura al hacer mucho zoom out
+- proyección extra (ortogonal superior(?) y lateral) 
+- corregir trasladar con drag click izq 
+- corregir altitude con click der
+- GRADIENTE DE COLOR (en get_point() de draw.c)
     - varias opciones de color con un atajo de teclado(?)
 - ROTAR LA FIGURA
 - añadir al inicio el nº bytes que carga de ficheros (mapas extra grandes) para la espera
 - window resize y entrar en fullscreen o centrado?
 
 readme:
-- incluir explicación de img_pixel_put
-- incluir explicación del funcionamiento de bresenham <----------- !!!!!!!! (1)
-    - añadir imagenes ilustrativas
-    - explicar concepto general
-    - explicar implementación del algoritmo
 - incluir explicación de la perspectiva isometrica: rotacion, traslacion
 - incluir explicación gradiente de color
 
 extra:
-- haciendo - zoom se invierte figura?? comprobar con otros fdf
 - keyhooks/mousehooks en linux (?)
+
+----------------------
+
+orden:
+1. GESTION DE ERRORES
+2. proyeccion ortogonal
+3. gradiente de color (+ README)
+4. rotacion? (+ README)
+5. leaks y megafree
+6. pijerias (zoomout, mouse, linux port)

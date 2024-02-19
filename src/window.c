@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:44:17 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/02/01 20:38:21 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/02/19 21:29:09 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ void	set_mlx(t_fdf *fdf)
 		exit_error("error creating mouse instance");
 }
 
-//TODO: explain the offset formula !!!
+/**
+ * function made to access the point memory slot on the display
+ */
 void	img_pixel_put(t_mlx *mlx, t_point p)
 {
 	char	*pixel_pos;
@@ -73,6 +75,8 @@ void	print_instructions(t_mlx *mlx)
 			"press m/n to increase/decrease figure's altitude");
 	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
 			"    (try dragging while pressing right click!)");
+	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
+			"use arrows to translate the figure");
 	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
 			"press r to reset figure");
 	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
