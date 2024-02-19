@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 13:19:01 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/02/01 20:32:02 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/02/19 18:21:04 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 */
 void	init_params(t_fdf *fdf)
 {
-	fdf->map->zoom = ZOOM;
-	fdf->map->altitude = 2;
+	fdf->map->zoom = 25;
+	fdf->map->altitude = 4;
 	fdf->map->perspective = DEG30INRAD;
 	fdf->map->show_instructions = ON;
 	fdf->mouse->drag = 0;

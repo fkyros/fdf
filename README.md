@@ -8,7 +8,7 @@ this project is about representing a landscape as a 3D object in which all surfa
 ## how to install
 
 follow the instructions of [official minilibx repo](https://github.com/42Paris/minilibx-linux) to build and include the 'libmlx.a' and 'mlx.h' to your system
-    tl;dr: you should have the libmlx.a on your /usr/local/bin and mlx.h on /usr/local/include (also you can modify the MLX_DIR on the makefile if you know wacha doin')
+    tl;dr: you should have the libmlx.a on your /usr/local/bin and mlx.h on /usr/local/include (also you can modify the MLX_DIR on my makefile if you know wacha doin')
 
 just clone the repo and build it!
 ```
@@ -18,7 +18,7 @@ make
 
 # so cool! i wanna do it as well!!!
 
-this project is so visual and interesting to develop that i needed to record everything needed to develop it. all you need is some C knowledge, refresh some maths, and a lot of patience.
+this project is so visual and interesting to develop that i wanted to record everything needed to develop it. all you need is some C knowledge, refresh some maths, and a lot of patience.
 i tried to gather all the useful information i found through the net and summarize it for me, so i hope this can help to anyone interested. 
 if you are keen to know everything and as curious as me, make sure to check the [resources](#resources) i used to get to know more about the topics covered! enjoy :)
 
@@ -26,7 +26,7 @@ if you are keen to know everything and as curious as me, make sure to check the 
 
 mlx is a bit hard to comprehend, but only the math aside is another story. let me introduce you to concepts and vocabulary I came across during the realization of this project in order to succeed in it (or at least try it)
 
-- rasterisation: taking an image described in vectors and convert it into a series of pixels which, when displayed together look, create the image which was represented via shapes
+- rasterisation: taking an image described in vectors and convert it into a series of pixels which, when displayed together look, create the image which was represented via shapes (so a raster is a representation of it)
 
 - aliasing (staircasing) effect: distortion that happens when a signal is reconstructed in a smaller resolution than the original sample
 
@@ -81,22 +81,23 @@ in order to write on the proper place of the window image, we need to calculate 
 
 given two coordinates (a point, make sure its in bounds of the window size!!) and the mlx\_image memory direction, we can calculate the position in the window with:
 
+```
 	offset = (y * mlx->size_line) + (x * mlx->bpp/8);
 	pixel_pos = mlx->img + offset;
+```
 
 'y' is the row where you want to write the pixel, multiplying it by the line length of a row, you get the total number of bytes in all preceding rows, getting where the row in memory is.
 
-the 'x' coordinate represents the column in which the pixel is located. multiplying it by bpp/8 gives the total number of bytes in all preceding pixels within the same row. the division by 8 is necessary because the bpp represents the number of bits per pixel, and each byte is 8 bits. (?)
+the 'x' coordinate represents the column in which the pixel is located. multiplying it by bpp/8 gives the total number of bytes in all preceding pixels within the same row. the division by 8 is necessary because the bpp represents the number of bits per pixel, and each byte is 8 bits.
 
-
-
+so now, the pixel we want is at the begining of the image plus this offset we calculated. later on, we can access this memory place to write which color we want to display.
 
 ## yea but how do i draw?
 
 let me introduce you to Jack Elton Bresenham and his famous algorithm developed back then in 1965 back then at IBM.
 his [line plotting algorithm](https://gitlab.cecs.anu.edu.au/pages/2018-S1/courses/comp1100/assignments/02/Bresenham.pdf) is a simple and rapid method that determines the points with a close approximation of a straight line between two points. the reason why I chose this algorithm is because of its efficiency. by only using substraction, addition and multiplication, you can draw almost anything. this will be the basis for the project (given that everything drawn in here are lines lol)
 
-!!!!!add image coordinates
+[rasterizing a line](github_pics/rasterizing_line.gif)
 
 lets see how it works, and my implementation:
 
@@ -107,12 +108,12 @@ void    bresenham(t_fdf *fdf, t_point from, t_point to)
     t_point sign;
     t_point point;
     int     err;
-    int     tmp;
+    int     factor;
 
 	//the differences refer to how distant are the initial to the final points
     diff.x = ft_abs(to.x - from.x);
     diff.y = ft_abs(to.y - from.y);
-	//the sign defines how should we advance inside the grid
+	//the sign defines in which direction should we advance inside the grid
     sign.x = -1;
     sign.y = -1;
     if (from.x < to.x)
@@ -127,13 +128,13 @@ void    bresenham(t_fdf *fdf, t_point from, t_point to)
     while (point.x != to.x || point.y != to.y)
     {
         img_pixel_put(fdf->mlx, point.x, point.y); //paint
-        tmp = err * 2; //used for optimization in the algo: removes redundant operations
-        if (tmp > - diff.y) //if the dx portion on err is bigger than the dy
+        factor = err * 2; //used for optimization in the algo: removes redundant operations
+        if (factor > - diff.y) //if the dx portion on err is bigger than the dy
         {
             point.x += sign.x; //we have to diminish the error by getting closer to the direction of x
             err -= diff.y; //we reduce the error by "dy" factor because of increasing 1 nudge in the x direction
         }
-        if (tmp < diff.x)
+        if (factor < diff.x)
         {
             point.y += sign.y;
             err += diff.x;
@@ -141,12 +142,17 @@ void    bresenham(t_fdf *fdf, t_point from, t_point to)
     }
 }
 ```
-the decision making inside the loop is based on HOW the error parameter is made
-
-
+the decision making inside the loop is based on HOW the error parameter of the interpolation method is made
 
 ### great grid, but where is the z dimension??
 TODO: explain isometric and orthogonemtric perspectives
+
+what we need to do to achieve the classic isometric view and apply altitude to our raster, we need to rotate 45º the grid and squash it in half (as the gif shows)
+
+[iso grid](github_pics/isometric_grid_transformation.gif)
+credits to [Jordan West](https://www.youtube.com/watch?v=04oQ2jOUjkU) for the visuals
+
+after that, apply the altitude value on the z coord. but spoiler!!! its a 2D enviroment, so we need to trick the y axis value to represent this.
 
 ### OMG can i color it??
 TODO: gradient explanation

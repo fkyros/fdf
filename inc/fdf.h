@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 19:57:04 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/02/01 20:33:41 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/02/19 18:52:38 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,6 @@ int		deal_mouse_motion(int x, int y, t_fdf *fdf);
 //draw.c
 void    bresenham(t_fdf *fdf, t_point from, t_point to);
 t_point	get_point(t_map *map, int x, int y);
-
-//draw_utils.c
-void	apply_zoom(t_map *map, t_point *point);
-int		apply_altitude(t_map *map, int prev_x, int prev_y);
 
 //utils/
 int		ft_error(char *msg);

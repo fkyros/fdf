@@ -6,35 +6,11 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:04:57 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/02/02 17:24:19 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/02/19 18:38:11 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
-
-//TODO: explain algorithm and demonstration on README
-
-t_point	get_point(t_map *map, int x, int y)
-{
-	t_point	point;
-	int		z;
-	int 	temp_x = 0;
-	int		temp_y = 0;
-
-	point.x = x;
-	point.y = y;
-	point.color = WHITE; 
-	apply_zoom(map, &point);
-	z = map->z_matrix[y][x];
-
-	temp_x = (point.x - point.y) * cos(map->perspective);
-    temp_y = (point.x + point.y) * sin(map->perspective);
-	temp_y += apply_altitude(map, x, y);
-	
-	point.x = temp_x + (WIN_WIDTH - (map->width * cos(map->perspective) * map->zoom)) / 2;
-	point.y = temp_y + (WIN_HEIGHT - (map->height * sin(map->perspective) * map->zoom)) / 2;
-	return (point);
-}
 
 void	setup_bresenham(t_point *diff, t_point *dir, t_point *from, t_point *to)
 {
@@ -48,13 +24,42 @@ void	setup_bresenham(t_point *diff, t_point *dir, t_point *from, t_point *to)
 		dir->y = 1;
 }
 
+/**
+ * takes a (x,y) from the map, applies zoom, rotation and 
+ * translation for the given perspective, extracts its
+ * z value from the map giving the altitude for each point,
+ * and centers it to the middle of the display
+ */
+t_point	get_point(t_map *map, int x, int y)
+{
+	t_point	point;
+	int		z;
+	int 	temp_x;
+	int		temp_y;
+
+	temp_x = 0;
+	temp_y = 0;
+	point.x = x;
+	point.y = y;
+	point.color = WHITE; 
+	z = map->z_matrix[y][x];
+	point.x *= map->zoom;
+    point.y *= map->zoom;
+	temp_x = (point.x - point.y) * cos(map->perspective);
+    temp_y = (point.x + point.y) * sin(map->perspective);
+    temp_y += -z * map->altitude;
+    point.x = temp_x + WIN_WIDTH / 2.5;
+    point.y = temp_y + WIN_HEIGHT / 4;	
+	return (point);
+}
+
 void    bresenham(t_fdf *fdf, t_point from, t_point to)
 {
 	t_point	point;
 	t_point	diff;
 	t_point	dir;
 	int		err;
-	int		tmp;
+	int		factor;
 
 	setup_bresenham(&diff, &dir, &from, &to);
 	point.x = from.x;
@@ -65,13 +70,13 @@ void    bresenham(t_fdf *fdf, t_point from, t_point to)
 	while (!(point.x == to.x && point.y == to.y))
 	{
 		img_pixel_put(fdf->mlx, point); //paint
-		tmp = err * 2; //used for optimization in the algo: removes redundant operations
-		if (tmp > - diff.y)
+		factor = err * 2; //used for optimization in the algo: removes redundant operations
+		if (factor > - diff.y)
 		{
 			point.x += dir.x;
 			err -= diff.y; //we reduce the error since we are getting closer to the final y
 		}
-		if (tmp < diff.x)
+		if (factor < diff.x)
 		{
 			point.y += dir.y;
 			err += diff.x;

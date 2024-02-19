@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 20:48:49 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/02/01 22:03:00 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/02/19 18:30:57 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 # define DEFINES_H
 
 # define WIN_NAME "gade-oli fdf :)"
-# define WIN_WIDTH 1280
+# define WIN_WIDTH 1080
 # define WIN_HEIGHT 720
 
-# define ZOOM 20
 # define DEG45INRAD 0.78539816 //45º = pi/6 rads
 # define DEG30INRAD 0.52359877 //30º = pi/4 rads
+# define ZOOM_SHIFT 5
 
 # define PGUP 126
 # define PGDOWN 125
