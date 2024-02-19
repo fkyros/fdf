@@ -97,7 +97,7 @@ so now, the pixel we want is at the begining of the image plus this offset we ca
 let me introduce you to Jack Elton Bresenham and his famous algorithm developed back then in 1965 back then at IBM.
 his [line plotting algorithm](https://gitlab.cecs.anu.edu.au/pages/2018-S1/courses/comp1100/assignments/02/Bresenham.pdf) is a simple and rapid method that determines the points with a close approximation of a straight line between two points. the reason why I chose this algorithm is because of its efficiency. by only using substraction, addition and multiplication, you can draw almost anything. this will be the basis for the project (given that everything drawn in here are lines lol)
 
-[rasterizing a line](github_pics/rasterizing_line.gif)
+![rasterizing a line](github_pics/rasterizing_line.gif)
 
 lets see how it works, and my implementation:
 
@@ -149,7 +149,7 @@ TODO: explain isometric and orthogonemtric perspectives
 
 what we need to do to achieve the classic isometric view and apply altitude to our raster, we need to rotate 45º the grid and squash it in half (as the gif shows)
 
-[iso grid](github_pics/isometric_grid_transformation.gif)
+![iso grid](github_pics/isometric_grid_transformation.gif)
 credits to [Jordan West](https://www.youtube.com/watch?v=04oQ2jOUjkU) for the visuals
 
 after that, apply the altitude value on the z coord. but spoiler!!! its a 2D enviroment, so we need to trick the y axis value to represent this.
