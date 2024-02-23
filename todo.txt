@@ -32,3 +32,4 @@ orden:
 4. rotacion? (+ README)
 5. leaks y megafree
 6. pijerias (zoomout, mouse, linux port)
+7. incluir libreria mlx como parte de /lib
