@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 13:19:01 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/02/19 21:08:39 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/03/11 16:22:32 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ void	init_params(t_fdf *fdf)
 	fdf->mouse->drag = 0;
 	fdf->map->translation_x = WIN_WIDTH / 2;
 	fdf->map->translation_y = WIN_HEIGHT / 4;
+	fdf->map->line_color = WHITE;
+	fdf->mlx->text_color = TEXT_COLOR;
+	fdf->mlx->background_color = BLACK;
 }
 
 /**
@@ -66,5 +69,21 @@ void	draw_map(t_fdf *fdf)
 			x++;
 		}
 		y++;
+	}
+}
+
+void	color_map(int key, t_fdf *fdf)
+{
+	if (key == KEY_1)
+	{
+		fdf->map->line_color = WHITE;
+		fdf->mlx->background_color = BLACK;
+		fdf->mlx->text_color = TEXT_COLOR;
+	}
+	if (key == KEY_2)
+	{
+		fdf->map->line_color = CARBON;
+		fdf->mlx->background_color = GRAY;
+		fdf->mlx->text_color = CARBON;
 	}
 }

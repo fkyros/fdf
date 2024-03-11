@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 20:48:49 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/02/19 21:12:51 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/03/11 16:14:06 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@
 # define M 46 //increase ceiling
 # define N 45 //reduce ceiling
 # define Z 6 //enter/exit zen mode
+# define KEY_1 18
+# define KEY_2 19
 
 # define MOUSELEFT 1 //translate the figure by dragging
 # define MOUSERIGHT 2 //increase/decrease altitude by dragging
@@ -58,6 +60,8 @@
 
 # define BLACK 0
 # define WHITE 0x00FFFFFF
+# define GRAY 0xBBBBBB
+# define CARBON 0x151515
 
 # define FAIL 1
 # define SUCCESS 0
@@ -76,6 +80,8 @@ typedef struct s_mlx
 	int		bpp;
 	int		line_length;
 	int		endian;
+	int		background_color;
+	int		text_color;
 }	t_mlx;
 
 typedef struct s_map
@@ -90,6 +96,9 @@ typedef struct s_map
 	int		show_instructions;
 	int		translation_x;
 	int		translation_y;
+	int		line_color;
+	//int		top_color;
+	//int		bottom_color;
 }	t_map;
 
 typedef struct s_point

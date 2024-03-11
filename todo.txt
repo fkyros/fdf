@@ -13,6 +13,7 @@
 - GRADIENTE DE COLOR (en get_point() de draw.c)
     - varias opciones de color con un atajo de teclado(?)
 - ROTAR LA FIGURA
+- BENDING
 - añadir al inicio el nº bytes que carga de ficheros (mapas extra grandes) para la espera
 - window resize y entrar en fullscreen o centrado?
 
@@ -26,10 +27,14 @@ extra:
 ----------------------
 
 orden:
-1. GESTION DE ERRORES
-2. proyeccion ortogonal
-3. gradiente de color (+ README)
-4. rotacion? (+ README)
-5. leaks y megafree
-6. pijerias (zoomout, mouse, linux port)
-7. incluir libreria mlx como parte de /lib
+- GESTION DE ERRORES
+- leaks y megafree
+- incluir libreria mlx como parte de /lib
+
+- proyeccion ortogonal
+- gradiente de color (+ README)
+- rotacion? (+ README)
+- bending?
+- corregir movimiento mouse
+
+- portear defines(teclado/mouse) a mi linux?

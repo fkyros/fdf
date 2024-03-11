@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 19:57:04 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/02/19 18:52:38 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/03/11 15:16:55 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	set_mlx_hooks(t_fdf *fdf);
 void	display_fdf(t_fdf *fdf);
 void	init_params(t_fdf *fdf);
 void	draw_map(t_fdf *fdf);
+void	color_map(int key, t_fdf *fdf);
 
 //parser.c
 t_map	*read_map(char *file);

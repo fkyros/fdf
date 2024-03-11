@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:14:13 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/02/19 21:13:40 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/03/11 15:17:27 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,9 @@ int	deal_key(int key, t_fdf *fdf)
 			fdf->map->show_instructions = ON;
 	}
 	deal_key_translation(key, fdf);
+	if (key >= KEY_1 && key <= KEY_2)
+		color_map(key, fdf);
+	//printf("key = %d\n", key);
 	display_fdf(fdf);
 	return (SUCCESS);
 }

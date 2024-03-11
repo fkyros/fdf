@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:44:17 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/02/19 21:29:09 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/03/11 16:11:16 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,23 +63,23 @@ void	print_instructions(t_mlx *mlx)
 	int	y;
 
 	y = 0;
-	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
+	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, mlx->text_color, \
 			"press ESC to exit");
-	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
+	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, mlx->text_color, \
 			"press p for 45RAD perspective");
-	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
+	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, mlx->text_color, \
 			"press i for isometric perspective");
-	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
+	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, mlx->text_color, \
 			"press +/- to zoom in/out (or use the mouse wheel!)");
-	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
+	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, mlx->text_color, \
 			"press m/n to increase/decrease figure's altitude");
-	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
+	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, mlx->text_color, \
 			"    (try dragging while pressing right click!)");
-	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
+	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, mlx->text_color, \
 			"use arrows to translate the figure");
-	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
+	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, mlx->text_color, \
 			"press r to reset figure");
-	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, TEXT_COLOR, \
+	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, mlx->text_color, \
 			"press z to enter/exit zen mode");
 }
 
@@ -100,7 +100,7 @@ void	clear_window(t_mlx *mlx)
 		{
 			p.x = j;
 			p.y = i;
-			p.color = BLACK;
+			p.color = mlx->background_color;
 			img_pixel_put(mlx, p);
 			j++;
 		}
