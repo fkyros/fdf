@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 19:57:04 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/03/11 15:16:55 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/03/28 18:23:45 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ int		deal_key(int key, t_fdf *fdf);
 
 //mousehooks.c
 int		deal_click(int click, int x, int y, t_fdf *fdf);
-int		deal_release(int click, int x, int y, t_fdf *fdf);
-int		deal_mouse_motion(int x, int y, t_fdf *fdf);
 
 //draw.c
 void    bresenham(t_fdf *fdf, t_point from, t_point to);

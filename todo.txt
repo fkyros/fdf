@@ -31,7 +31,7 @@ orden:
 - leaks y megafree
 - incluir libreria mlx como parte de /lib
 
-- proyeccion ortogonal
+- proyeccion ortogonal (ortographic)
 - gradiente de color (+ README)
 - rotacion? (+ README)
 - bending?

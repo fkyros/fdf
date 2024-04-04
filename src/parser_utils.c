@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:35:33 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/02/01 20:33:25 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/04/04 21:00:22 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	fill_matrix(char *line, int *z_line)
 
 	nums = ft_split(line, ' ');
 	if (!nums)
-		exit_error("memory error on split in fill_matrix");
+		exit_error("memory error on split in fill_matrix()");
 	i = 0;
 	while (nums[i])
 	{

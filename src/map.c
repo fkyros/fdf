@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 13:19:01 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/03/11 16:22:32 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/04/04 19:58:05 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	init_params(t_fdf *fdf)
 	fdf->map->altitude = 4;
 	fdf->map->perspective = DEG30INRAD;
 	fdf->map->show_instructions = ON;
-	fdf->mouse->drag = 0;
 	fdf->map->translation_x = WIN_WIDTH / 2;
 	fdf->map->translation_y = WIN_HEIGHT / 4;
 	fdf->map->line_color = WHITE;
@@ -53,8 +52,6 @@ void	draw_map(t_fdf *fdf)
 	int	y;
 
 	y = 0;
-	if (!fdf->map->zoom)
-		return ;
 	while (y < fdf->map->height)
 	{
 		x = 0;

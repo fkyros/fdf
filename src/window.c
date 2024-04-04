@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:44:17 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/03/11 16:11:16 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/04/04 18:33:34 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,6 @@ void	print_instructions(t_mlx *mlx)
 	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, mlx->text_color, \
 			"press m/n to increase/decrease figure's altitude");
 	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, mlx->text_color, \
-			"    (try dragging while pressing right click!)");
-	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, mlx->text_color, \
 			"use arrows to translate the figure");
 	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, mlx->text_color, \
 			"press r to reset figure");
@@ -113,7 +111,4 @@ void	set_mlx_hooks(t_fdf *fdf)
 	mlx_key_hook(fdf->mlx->win, deal_key, fdf);
 	mlx_mouse_hook(fdf->mlx->win, deal_click, fdf);
 	mlx_hook(fdf->mlx->win, RED_DESTROY, 0, deal_close, fdf);
-	mlx_hook(fdf->mlx->win, MOUSE_PRESS, 0, deal_click, fdf);
-	mlx_hook(fdf->mlx->win, MOUSE_RELEASE, 0, deal_release, fdf);
-	mlx_hook(fdf->mlx->win, MOUSE_MOTION, 0, deal_mouse_motion, fdf);
 }
