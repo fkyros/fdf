@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 20:20:37 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/02/01 20:33:49 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/04/04 20:35:50 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ void	create_and_fill_z_matrix(t_map *map, char *file)
 	char	*line;
 
 	i = 0;
-	map->z_matrix = malloc(sizeof(int *) * map->height);
-	while (i < map->height + 1)
+	map->z_matrix = malloc(sizeof(int *) * (map->height + 1));
+	while (i < map->height)
 	{
 		map->z_matrix[i] = malloc(sizeof(int) * map->width);
 		i++;
