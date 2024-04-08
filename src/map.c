@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 13:19:01 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/04/04 19:58:05 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/04/08 15:29:53 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,14 @@ void	color_map(int key, t_fdf *fdf)
 		fdf->mlx->background_color = GRAY;
 		fdf->mlx->text_color = CARBON;
 	}
+}
+
+void	zoom_map(t_map *map, int control)
+{
+	if (control == PLUS)
+		map->zoom += ZOOM_SHIFT;
+	if (control == MINUS)
+		map->zoom -= ZOOM_SHIFT;
+	if (map->zoom < 0)
+		map->zoom = 1;
 }

@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:14:13 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/04/04 19:32:01 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/04/08 15:22:25 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ int	deal_key(int key, t_fdf *fdf)
 	if (key == I)
 		fdf->map->perspective = DEG30INRAD;
 	if (key == PLUS)
-		fdf->map->zoom += ZOOM_SHIFT;
+		zoom_map(fdf->map, PLUS);
 	if (key == MINUS)
-		fdf->map->zoom -= ZOOM_SHIFT;
+		zoom_map(fdf->map, MINUS);
 	if (key == M)
 		fdf->map->altitude += ALTITUDE_SHIFT;
 	if (key == N)

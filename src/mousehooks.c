@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:35:49 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/03/28 18:21:59 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/04/08 15:29:57 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	deal_click(int click, int x, int y, t_fdf *fdf)
 	fdf->mouse->x = x;
 	fdf->mouse->y = y;
 	if (click == MOUSEUP)
-		fdf->map->zoom += ZOOM_SHIFT;
+		zoom_map(fdf->map, PLUS);
 	if (click == MOUSEDOWN)
-		fdf->map->zoom -= ZOOM_SHIFT;
+		zoom_map(fdf->map, MINUS);
 	display_fdf(fdf);
 	return (SUCCESS);
 }
