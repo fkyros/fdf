@@ -1,40 +1,31 @@
 100:
-- gestión de errores
-    - mapas con algo distinto a espacios -> BUCLE INFINITO
-    - mapas con codigos hexadecimales (?) !!!!!!!!!!!
-	- comprobar leaks !!!!!!!!!!!!!!!!!!!!!!
 - free generico para boton de ESC, rojo y exit: liberar todo lo alocado
+- preparar evaluación !!!
 
 125:
 - eliminar inversion de la figura al hacer mucho zoom out
-- proyección extra (ortogonal superior(?) y lateral) 
-- corregir trasladar con drag click izq 
-- corregir altitude con click der
+- proyección extra (ortogonal superior(?) y lateral)
+- traslación
+- rotación
 - GRADIENTE DE COLOR (en get_point() de draw.c)
     - varias opciones de color con un atajo de teclado(?)
+- mouse
+	- trasladar
+	- rotar
+	- aumentar/disminuir altitud
+
+--------------------------------
+
 - ROTAR LA FIGURA
 - BENDING
 - añadir al inicio el nº bytes que carga de ficheros (mapas extra grandes) para la espera
 - window resize y entrar en fullscreen o centrado?
+- funcionalidades en mouse
 
 readme:
-- incluir explicación de la perspectiva isometrica: rotacion, traslacion
+- incluir explicación de la perspectiva isometrica (y rotacion, traslacion...)
 - incluir explicación gradiente de color
 
-extra:
-- keyhooks/mousehooks en linux (?)
-
-----------------------
-
-orden:
-- GESTION DE ERRORES
-- leaks y megafree
-- incluir libreria mlx como parte de /lib
-
-- proyeccion ortogonal (ortographic)
-- gradiente de color (+ README)
-- rotacion? (+ README)
-- bending?
-- corregir movimiento mouse
-
-- portear defines(teclado/mouse) a mi linux?
+portabilidad:
+- libmlx_linux.a en libs/ & makefile lo autodetecta
+- keyhooks/mousehooks en linux (defines.h)

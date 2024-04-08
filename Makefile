@@ -6,7 +6,7 @@
 #    By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/22 19:44:28 by gade-oli          #+#    #+#              #
-#    Updated: 2024/04/04 19:49:13 by gade-oli         ###   ########.fr        #
+#    Updated: 2024/04/08 14:27:20 by gade-oli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,8 @@ OBJ = $(SRC:src/%.c=bin/%.o)
 INC = inc/defines.h \
 	  inc/fdf.h
 
+UNAME = $(shell uname -s)
+
 #libft-----------------------------------------------------------
 
 LIBFT_DIR = libs/libft/
@@ -53,13 +55,13 @@ PRINTF = $(PRINTF_DIR)libftprintf.a
 
 #minilibx--------------------------------------------------------
 
-#MLX_DIR = libs/mlx
-#MLX_LIB = $(MLX_DIR)/libmlx_$(UNAME).a
-MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit -lm
+MLX_DIR = libs/minilibx-linux
+MLX = $(MLX_DIR)/libmlx_$(UNAME).a
+#MLX = /usr/local/lib/libmlx.a #if you already have it locally
 
+MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit -lm
 # !!! CAUTION: apply this on linux system
 #MLX_FLAGS = -lmlx -lXext -lX11
-#MLX = /usr/local/lib/libmlx.a
 
 #recipes---------------------------------------------------------
 

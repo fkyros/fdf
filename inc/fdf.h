@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 19:57:04 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/03/28 18:23:45 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/04/08 15:23:41 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	display_fdf(t_fdf *fdf);
 void	init_params(t_fdf *fdf);
 void	draw_map(t_fdf *fdf);
 void	color_map(int key, t_fdf *fdf);
+void	zoom_map(t_map *map, int control);
 
 //parser.c
 t_map	*read_map(char *file);
