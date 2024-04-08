@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:04:57 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/03/11 16:22:00 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/04/08 17:52:39 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	bresenham(t_fdf *fdf, t_point from, t_point to)
 	err = diff.x - diff.y;
 	while (!(point.x == to.x && point.y == to.y))
 	{
-		//TODO: implementar gradiente de color
 		point.color = fdf->map->line_color;
 		img_pixel_put(fdf->mlx, point);
 		factor = err * 2;

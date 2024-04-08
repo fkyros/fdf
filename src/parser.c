@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 20:20:37 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/04/04 20:35:50 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/04/08 14:57:56 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	count_and_check_line_width(char **matrix, char *line)
 	return (width);
 }
 
+//checks only the first line of the map
 int	get_map_width(char *file)
 {
 	int		width;

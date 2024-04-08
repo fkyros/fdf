@@ -8,7 +8,7 @@ this project is about representing a landscape as a 3D object in which all surfa
 ## how to install
 
 follow the instructions of [official minilibx repo](https://github.com/42Paris/minilibx-linux) to build and include the 'libmlx.a' and 'mlx.h' to your system
-    tl;dr: you should have the libmlx.a on your /usr/local/bin and mlx.h on /usr/local/include (also you can modify the MLX_DIR on my makefile if you know wacha doin')
+    tl;dr: you should have the libmlx.a on your /usr/local/bin and mlx.h on /usr/local/include (also you can modify the MLX variable on my makefile, if you know wacha doin')
 
 now just clone my repo and build it!
 ```

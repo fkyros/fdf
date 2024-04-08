@@ -3,24 +3,20 @@
 - preparar evaluación !!!
 
 125:
-- eliminar inversion de la figura al hacer mucho zoom out
-- proyección extra (ortogonal superior(?) y lateral)
-- traslación
-- rotación
+- proyección extra: paralela - ortographic
 - GRADIENTE DE COLOR (en get_point() de draw.c)
     - varias opciones de color con un atajo de teclado(?)
+- rotación
+
 - mouse
 	- trasladar
 	- rotar
 	- aumentar/disminuir altitud
-
---------------------------------
-
-- ROTAR LA FIGURA
-- BENDING
+- bending(?)
 - añadir al inicio el nº bytes que carga de ficheros (mapas extra grandes) para la espera
 - window resize y entrar en fullscreen o centrado?
-- funcionalidades en mouse
+
+----------------------
 
 readme:
 - incluir explicación de la perspectiva isometrica (y rotacion, traslacion...)
