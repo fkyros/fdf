@@ -1,7 +1,3 @@
-100:
-- free generico para boton de ESC, rojo y exit: liberar todo lo alocado
-- preparar evaluación !!!
-
 125:
 - proyección extra: paralela - ortographic
 - GRADIENTE DE COLOR (en get_point() de draw.c)
@@ -15,6 +11,7 @@
 - bending(?)
 - añadir al inicio el nº bytes que carga de ficheros (mapas extra grandes) para la espera
 - window resize y entrar en fullscreen o centrado?
+- free generico para boton de ESC, rojo y exit: liberar todo lo alocado
 
 ----------------------
 

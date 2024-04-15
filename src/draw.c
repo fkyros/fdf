@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:04:57 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/04/08 17:52:39 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/04/15 22:48:27 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,10 @@ t_point	get_point(t_map *map, int x, int y)
 	return (point);
 }
 
-void	setup_bresenham(t_point *p, t_point *dir, t_point *from, t_point *to)
+t_point	setup_bresenham(t_point *p, t_point *dir, t_point *from, t_point *to)
 {
+	t_point	diff;
+
 	p->x = from->x;
 	p->y = from->y;
 	dir->x = -1;
@@ -48,6 +50,9 @@ void	setup_bresenham(t_point *p, t_point *dir, t_point *from, t_point *to)
 		dir->x = 1;
 	if (from->y < to->y)
 		dir->y = 1;
+	diff.x = ft_abs(to->x - from->x);
+	diff.y = ft_abs(to->y - from->y);
+	return (diff);
 }
 
 void	bresenham(t_fdf *fdf, t_point from, t_point to)
@@ -58,9 +63,7 @@ void	bresenham(t_fdf *fdf, t_point from, t_point to)
 	int		err;
 	int		factor;
 
-	setup_bresenham(&point, &dir, &from, &to);
-	diff.x = ft_abs(to.x - from.x);
-	diff.y = ft_abs(to.y - from.y);
+	diff = setup_bresenham(&point, &dir, &from, &to);
 	err = diff.x - diff.y;
 	while (!(point.x == to.x && point.y == to.y))
 	{

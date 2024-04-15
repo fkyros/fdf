@@ -3,7 +3,7 @@
 
 this project is about representing a landscape as a 3D object in which all surfaces are outlined in lines.
 
-!!!!!add image/video of my own fdf
+![render](github_pics/render.png)
 
 ## how to install
 
@@ -160,19 +160,27 @@ credits to [Jordan West](https://www.youtube.com/watch?v=04oQ2jOUjkU) for the vi
 after that, apply the altitude value on the z coord. but spoiler!!! its a 2D enviroment, so we need to [trick the y axis value](https://github.com/VBrazhnik/FdF/wiki/How-to-perform-isometric-transformations%3F) to represent this.
 
 ### OMG can i color it??
+sure! let's add some keybinds to change the background color for another cooler view hehe
+
+![carbon_render](github_pics/carbon_render.png)
+
 TODO: gradient explanation
 
 ### lets get playful
 TODO: explain mlx events and modifiable parameters
 
+### TODOs thing
+
+this project began to take me too long for what the intra thinks its worth, so i had to leave it as it is, without implementing some other cool features i had planned as raster bending or color gradients... lets hope for the best in my cursus :')
+
 # resources
 this could haven't happened without these golden archives:
 
-[bresenham](https://digitalbunker.dev/bresenhams-line-algorithm/)
-[mlx student docs](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html)
-[mlx tutorial](https://github.com/Gontjarow/MiniLibX/tree/master/docs)
-[rgb slider](http://www.cknuckles.com/rgbsliders.html)
-[mlx images tuto](https://github.com/keuhdall/images_example)
-[color linear gradient](https://github.com/VBrazhnik/FdF/wiki/How-to-create-linear-gradient%3F)
-[isometric intro](https://stackoverflow.com/questions/1189830/isometric-projection-in-2d-coordinate-system)
-[types of projections](https://www.firstinarchitecture.co.uk/architecture-drawing-projections/)
+- [bresenham](https://digitalbunker.dev/bresenhams-line-algorithm/)
+- [mlx student docs](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html)
+- [mlx tutorial](https://github.com/Gontjarow/MiniLibX/tree/master/docs)
+- [rgb slider](http://www.cknuckles.com/rgbsliders.html)
+- [mlx images tuto](https://github.com/keuhdall/images_example)
+- [color linear gradient](https://github.com/VBrazhnik/FdF/wiki/How-to-create-linear-gradient%3F)
+- [isometric intro](https://stackoverflow.com/questions/1189830/isometric-projection-in-2d-coordinate-system)
+- [types of projections](https://www.firstinarchitecture.co.uk/architecture-drawing-projections/)

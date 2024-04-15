@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:44:17 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/04/04 18:33:34 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/04/15 22:48:53 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ void	print_instructions(t_mlx *mlx)
 			"use arrows to translate the figure");
 	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, mlx->text_color, \
 			"press r to reset figure");
+	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, mlx->text_color, \
+			"press 1/2 to change colors");
 	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, mlx->text_color, \
 			"press z to enter/exit zen mode");
 }
