@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:44:17 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/04/15 22:48:53 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/04/22 17:34:26 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	print_instructions(t_mlx *mlx)
 	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, mlx->text_color, \
 			"press ESC to exit");
 	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, mlx->text_color, \
-			"press p for 45RAD perspective");
+			"press p for conic perspective");
 	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, mlx->text_color, \
 			"press i for isometric perspective");
 	mlx_string_put(mlx->ptr, mlx->win, 20, y += 20, mlx->text_color, \

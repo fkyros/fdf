@@ -6,7 +6,7 @@
 #    By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/22 19:44:28 by gade-oli          #+#    #+#              #
-#    Updated: 2024/04/08 14:27:20 by gade-oli         ###   ########.fr        #
+#    Updated: 2024/04/22 17:50:48 by gade-oli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,4 +98,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

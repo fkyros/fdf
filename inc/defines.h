@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 20:48:49 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/04/15 22:55:20 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/04/22 17:41:52 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ typedef struct s_point
 	int	color;
 }	t_point;
 
-typedef	struct s_mouse
+typedef struct s_mouse
 {
 	int	click;
 	int	x;

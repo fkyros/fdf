@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 19:57:04 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/04/08 15:23:41 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/04/22 17:41:08 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@
 # include <fcntl.h>
 # include <math.h>
 
-# include <mlx.h> //if MLX is not installed in the /usr/local -> edit to the proper location
+//assuming MLX is located at /usr/local 
+# include <mlx.h>
+
 # include "defines.h"
 # include "../libs/libft/libft.h"
 # include "../libs/printf/inc/ft_printf.h"
@@ -53,13 +55,13 @@ int		deal_key(int key, t_fdf *fdf);
 int		deal_click(int click, int x, int y, t_fdf *fdf);
 
 //draw.c
-void    bresenham(t_fdf *fdf, t_point from, t_point to);
+void	bresenham(t_fdf *fdf, t_point from, t_point to);
 t_point	get_point(t_map *map, int x, int y);
 
 //utils/
 int		ft_error(char *msg);
 void	exit_error(char *msg);
 void	free_matrix(char **matrix);
-int	    ft_abs(int a);
+int		ft_abs(int a);
 
 #endif
