@@ -13,7 +13,7 @@ follow the instructions of [official minilibx repo](https://github.com/42Paris/m
 now just clone my repo and build it!
 ```
 git clone --recurse-submodules git@github.com:fkyros/fdf.git
-make
+cd fdf && make
 ```
 
 # so cool! i wanna do it as well!!!
