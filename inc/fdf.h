@@ -6,7 +6,7 @@
 /*   By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 19:57:04 by gade-oli          #+#    #+#             */
-/*   Updated: 2024/04/22 17:41:08 by gade-oli         ###   ########.fr       */
+/*   Updated: 2024/05/02 12:51:11 by gade-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 # include <math.h>
 
 //assuming MLX is located at /usr/local 
-# include <mlx.h>
+//# include <mlx.h>
+# include "../libs/minilibx-linux/mlx.h"
 
 # include "defines.h"
 # include "../libs/libft/libft.h"

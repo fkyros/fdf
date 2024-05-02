@@ -6,7 +6,7 @@
 #    By: gade-oli <gade-oli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/22 19:44:28 by gade-oli          #+#    #+#              #
-#    Updated: 2024/04/22 17:50:48 by gade-oli         ###   ########.fr        #
+#    Updated: 2024/05/02 14:40:09 by gade-oli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,13 +55,13 @@ PRINTF = $(PRINTF_DIR)libftprintf.a
 
 #minilibx--------------------------------------------------------
 
-MLX_DIR = libs/minilibx-linux
-MLX = $(MLX_DIR)/libmlx_$(UNAME).a
+MLX_DIR = libs/minilibx-linux/
+MLX = $(MLX_DIR)libmlx_$(UNAME).a
 #MLX = /usr/local/lib/libmlx.a #if you already have it locally
 
-MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit -lm
+#MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit -lm
 # !!! CAUTION: apply this on linux system
-#MLX_FLAGS = -lmlx -lXext -lX11
+MLX_FLAGS = -lm -lXext -lX11
 
 #recipes---------------------------------------------------------
 
@@ -80,8 +80,12 @@ $(PRINTF):
 		@make --directory=$(PRINTF_DIR)
 		@echo $(GREEN)"ft_printf compiled!"$(RESET)
 
-$(NAME):	$(LIBFT) $(PRINTF) $(OBJ)
-		$(CC) $(CFLAGS) $(MLX_FLAGS) $(OBJ) $(LIBFT) $(PRINTF) $(MLX) -o $(NAME)
+$(MLX):
+		@make --directory=$(MLX_DIR)
+		@echo $(GREEN)"minilibx_$(UNAME) compiled!"$(RESET)
+
+$(NAME):	$(LIBFT) $(PRINTF) $(OBJ) $(MLX)
+		$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBFT) $(PRINTF) $(MLX) $(MLX_FLAGS)
 		@echo $(GREEN)"fdf compiled!"$(RESET)
 
 clean:

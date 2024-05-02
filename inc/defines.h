@@ -24,28 +24,55 @@
 # define ALTITUDE_SHIFT 2
 # define TRANSLATION_SHIFT 15
 
-# define PGUP 126
-# define PGDOWN 125
-# define PGLEFT 123
-# define PGRIGHT 124
-# define W 13
-# define A 0
-# define S 1
-# define D 2
-# define ESC 53
-# define PLUS 30 
-# define MINUS 44
-# define SPACE 49 //change color progressively while pressed?
-# define C 8 //center raster 
-# define P 35 //change perspective
-# define I 34
-# define O 31
-# define R 15 //reset values for zoom and position to default
-# define M 46 //increase ceiling
-# define N 45 //reduce ceiling
-# define Z 6 //enter/exit zen mode
-# define KEY_1 18
-# define KEY_2 19
+# ifdef __linux__
+#  define PGUP 65362
+#  define PGDOWN 65364
+#  define PGLEFT 65361
+#  define PGRIGHT 65363
+#  define W 119
+#  define A 97
+#  define S 115
+#  define D 100
+#  define ESC 65307
+#  define PLUS 43
+#  define MINUS 45
+#  define SPACE 32 //change line color progressively while pressed?
+#  define C 99 //center raster
+#  define P 112 //change perspective
+#  define I 105
+#  define O 111
+#  define R 114 //reset values for zoom and position to default
+#  define M 109 //increase ceiling
+#  define N 110 //reduce ceiling
+#  define Z 122 //enter/exit zen mode
+#  define KEY_1 49
+#  define KEY_2 50
+# endif
+
+# ifdef __APPLE__
+#  define PGUP 126
+#  define PGDOWN 125
+#  define PGLEFT 123
+#  define PGRIGHT 124
+#  define W 13
+#  define A 0
+#  define S 1
+#  define D 2
+#  define ESC 53
+#  define PLUS 30 
+#  define MINUS 44
+#  define SPACE 49 //change line color progressively while pressed?
+#  define C 8 //center raster 
+#  define P 35 //change perspective
+#  define I 34
+#  define O 31
+#  define R 15 //reset values for zoom and position to default
+#  define M 46 //increase ceiling
+#  define N 45 //reduce ceiling
+#  define Z 6 //enter/exit zen mode
+#  define KEY_1 18
+#  define KEY_2 19
+# endif
 
 # define MOUSELEFT 1 //translate the figure by dragging
 # define MOUSERIGHT 2 //increase/decrease altitude by dragging
